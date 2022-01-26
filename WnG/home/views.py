@@ -320,7 +320,7 @@ def get_weather(request):
     
     # return HttpResponse(res)
     # weather.html로 보내 출력하기
-    return render(request, 'templates/home.html', {'today': today_result, 'tomorrow':tomorrow_result})
+    return render(request, 'templates/weather.html', {'today': today_result, 'tomorrow':tomorrow_result})
 
 
 
@@ -337,16 +337,16 @@ import json
 # Create your views here.
 
 def home(request):
-    return render(request, 'hometemplate/index.html')
+    return render(request, 'templates/home.html')
 
 # def kakaologinhome(request):
-#     return render(request, 'hometemplate/kakaologinhome.html')
+#     return render(request, 'templates/kakaologinhome.html')
 
 def kakaologin(request):
     _context = {'check':False}
     if request.session.get('access_token'):
         _context['check'] = True
-    return render(request, 'hometemplate/kakaologinhome.html', _context)
+    return render(request, 'templates/kakaologinhome.html', _context)
 
 def kakaoLoginLogic(request):
     _restApiKey = '5d03e24af9d6c95a6f526e3308d8879d' # 입력필요
@@ -363,7 +363,7 @@ def kakaoLoginLogicRedirect(request):
     _result = _res.json()
     request.session['access_token'] = _result['access_token']
     request.session.modified = True
-    return render(request, 'hometemplate/kakaologinSuccess.html')
+    return render(request, 'templates/kakaologinSuccess.html')
 
 def kakaoLogout(request):
     _token = request.session['access_token']
@@ -379,9 +379,9 @@ def kakaoLogout(request):
     _result = _res.json()
     if _result.get('id'):
         del request.session['access_token']
-        return render(request, 'hometemplate/kakaologinhome.html')
+        return render(request, 'templates/kakaologinhome.html')
     else:
-        return render(request, 'hometemplate/kakaologoutError.html')
+        return render(request, 'templates/kakaologoutError.html')
 
 #날씨 요약 정보
 def kakaoMessage_climate(request):
@@ -442,4 +442,4 @@ def kakaoMessage_climate(request):
 
     _res = requests.post(url_message, headers=_header, data=data)
     _result = _res.json()
-    return render(request, 'hometemplate/kakaoMessageSent.html')
+    return render(request, 'templates/kakaoMessageSent.html')

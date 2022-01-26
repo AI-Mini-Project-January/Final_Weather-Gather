@@ -38,20 +38,20 @@ function getCookie(name) {
         <box>
 
             {% if today.2 == '소나기' %}
-                <img src='{% static "shower.svg" %}' style = "width: 200; height: 200">
+                <img src='{% static "img/shower.svg" %}' style = "width: 200; height: 200">
             {% elif today.2 == '눈' %}
-                <img src='{% static "snow.svg" %}'style = "width: 200; height: 200">
+                <img src='{% static "img/snow.svg" %}'style = "width: 200; height: 200">
             {% elif today.2 == '비/눈' %}
-                <img src='{% static "sleet.svg" %}'style = "width: 200; height: 200">
+                <img src='{% static "img/sleet.svg" %}'style = "width: 200; height: 200">
             {% elif today.2 == '비' %}
-                <img src='{% static "rain.svg" %}'style = "width: 200; height: 200">
+                <img src='{% static "img/rain.svg" %}'style = "width: 200; height: 200">
             {% else %}
                 {% if today.1 == '맑음' %}
-                    <img src='{% static "clear-day.svg" %}'style = "width: 200; height: 200">
+                    <img src='{% static "img/clear-day.svg" %}'style = "width: 200; height: 200">
                 {% elif today.1 == '구름많음' %}
-                    <img src='{% static "cloudy.svg" %}'style = "width: 200; height: 200">
+                    <img src='{% static "img/cloudy.svg" %}'style = "width: 200; height: 200">
                 {% else %}
-                    <img src='{% static "overcast.svg" %}'style = "width: 200; height: 200">
+                    <img src='{% static "img/overcast.svg" %}'style = "width: 200; height: 200">
                 {% endif%}
             {% endif %}
 
@@ -67,12 +67,12 @@ function getCookie(name) {
         </h3>
         
         
-        <img src='{% static "wind.svg" %}'>
+        <img src='{% static "img/wind.svg" %}'>
         <h3>바람 {{ today.1 }}</h3>
         
         <h3> 눈/비 소식 {{ today.3 }} </h3>
         
-        <img src='{% static "raindrops.svg" %}'>
+        <img src='{% static "img/raindrops.svg" %}'>
         <h3> 강수 확률 {{ today.4 }}</h3>
         <h3>습도 {{ today.5 }}</h3>
         {% comment %} <p>{{ today }} </p><hr> {% endcomment %}
@@ -86,68 +86,68 @@ function getCookie(name) {
         
         <td> 
             {% if today.6 >= "20220131" and today.6 <= "20220202" %}
-                <img src = '{% static "hanbok.png" %}' style = "width: 150; height: auto;">
-                <img src = '{% static "hanbok (2).png" %}' style = "width: 150; height: auto;">
-                <img src = '{% static "hanbok (3).png" %}' style = "width: 150; height: auto;">
-                <img src = '{% static "lucky-bag.png" %}' style = "width: 150; height: auto;">
+                <img src = '{% static "img/hanbok.png" %}' style = "width: 150; height: auto;">
+                <img src = '{% static "img/hanbok (2).png" %}' style = "width: 150; height: auto;">
+                <img src = '{% static "img/hanbok (3).png" %}' style = "width: 150; height: auto;">
+                <img src = '{% static "img/lucky-bag.png" %}' style = "width: 150; height: auto;">
 
             {% elif today.6 >= "20220909" and today.6 <= "20220912" %}
-                <img src = '{% static "hanbok.png" %}' style = "width: 150; height: auto;">
-                <img src = '{% static "hanbok (2).png" %}' style = "width: 150; height: auto;">
-                <img src = '{% static "hanbok (3).png" %}' style = "width: 150; height: auto;">
-                <img src = '{% static "lucky-bag.png" %}' style = "width: 150; height: auto;">
+                <img src = '{% static "img/hanbok.png" %}' style = "width: 150; height: auto;">
+                <img src = '{% static "img/hanbok (2).png" %}' style = "width: 150; height: auto;">
+                <img src = '{% static "img/hanbok (3).png" %}' style = "width: 150; height: auto;">
+                <img src = '{% static "img/lucky-bag.png" %}' style = "width: 150; height: auto;">
 
             {% else %}
 
                 {% if today.0 >= 28 %}
-                    <img src='{% static "sleeveless-shirt.png" %}'style = "width: 150; height: auto;">
-                    <img src='{% static "skirt (2).png" %}'style = "width: 150; height: auto;">
-                    <img src='{% static "sleeveless-shirt (1).png" %}'style = "width: 150; height: auto;">
-                    <img src='{% static "sleeveless.png" %}'style = "width: 150; height: auto;">
-                    <img src='{% static "denim-shorts.png" %}'style = "width: 150; height: auto;">
+                    <img src='{% static "img/sleeveless-shirt.png" %}'style = "width: 150; height: auto;">
+                    <img src='{% static "img/skirt (2).png" %}'style = "width: 150; height: auto;">
+                    <img src='{% static "img/sleeveless-shirt (1).png" %}'style = "width: 150; height: auto;">
+                    <img src='{% static "img/sleeveless.png" %}'style = "width: 150; height: auto;">
+                    <img src='{% static "img/denim-shorts.png" %}'style = "width: 150; height: auto;">
             
                 {% elif today.0 >= 23 %}
-                    <img src='{% static "tshirt (3).png" %}'style = "width: 150; height: auto;">
-                    <img src='{% static "pants (2).png" %}'style = "width: 150; height: auto;">
-                    <img src='{% static "skirt.png" %}'style = "width: 150; height: auto;">
-                    <img src='{% static "jogger-pants.png" %}'style = "width: 150; height: auto;">
+                    <img src='{% static "img/tshirt (3).png" %}'style = "width: 150; height: auto;">
+                    <img src='{% static "img/pants (2).png" %}'style = "width: 150; height: auto;">
+                    <img src='{% static "img/skirt.png" %}'style = "width: 150; height: auto;">
+                    <img src='{% static "img/jogger-pants.png" %}'style = "width: 150; height: auto;">
             
                 {% elif today.0 >= 20 %}
-                    <img src='{% static "blouse.png" %}'style = "width: 150; height: auto;">
-                    <img src='{% static "tshirt (2).png" %}'style = "width: 150; height: auto;">
-                    <img src='{% static "pants.png" %}'style = "width: 150; height: auto;">
-                    <img src='{% static "shirt.png" %}'style = "width: 150; height: auto;">
-                    <img src='{% static "dress.png" %}'style = "width: 150; height: auto;">
+                    <img src='{% static "img/blouse.png" %}'style = "width: 150; height: auto;">
+                    <img src='{% static "img/tshirt (2).png" %}'style = "width: 150; height: auto;">
+                    <img src='{% static "img/pants.png" %}'style = "width: 150; height: auto;">
+                    <img src='{% static "img/shirt.png" %}'style = "width: 150; height: auto;">
+                    <img src='{% static "img/dress.png" %}'style = "width: 150; height: auto;">
             
                 {% elif today.0 >= 17 %}
-                    <img src='{% static "hoodie (3).png" %}'style = "width: 150; height: auto;">
-                    <img src='{% static "ripped-jeans.png" %}'style = "width: 150; height: auto;">
-                    <img src='{% static "hoodie.png" %}'style = "width: 150; height: auto;">
-                    <img src='{% static "hoodie (4).png" %}'style = "width: 150; height: auto;">
+                    <img src='{% static "img/hoodie (3).png" %}'style = "width: 150; height: auto;">
+                    <img src='{% static "img/ripped-jeans.png" %}'style = "width: 150; height: auto;">
+                    <img src='{% static "img/hoodie.png" %}'style = "width: 150; height: auto;">
+                    <img src='{% static "img/hoodie (4).png" %}'style = "width: 150; height: auto;">
             
                 {% elif today.0 >= 12 %}
-                    <img src='{% static "denim-jacket.png" %}'style = "width: 150; height: auto;">
-                    <img src='{% static "long-skirt.png" %}'style = "width: 150; height: auto;">
-                    <img src='{% static "cardigan.png" %}'style = "width: 150; height: auto;">
-                    <img src='{% static "cardigan (2).png" %}'style = "width: 150; height: auto;">
+                    <img src='{% static "img/denim-jacket.png" %}'style = "width: 150; height: auto;">
+                    <img src='{% static "img/long-skirt.png" %}'style = "width: 150; height: auto;">
+                    <img src='{% static "img/cardigan.png" %}'style = "width: 150; height: auto;">
+                    <img src='{% static "img/cardigan (2).png" %}'style = "width: 150; height: auto;">
             
                 {% elif today.0 >= 9 %}
-                    <img src='{% static "turtleneck.png" %}'style = "width: 150; height: auto;">
-                    <img src='{% static "trench-coat.png" %}'style = "width: 150; height: auto;">
-                    <img src='{% static "jacket.png" %}'style = "width: 150; height: auto;">
-                    <img src='{% static "jumper.png" %}'style = "width: 150; height: auto;">
+                    <img src='{% static "img/turtleneck.png" %}'style = "width: 150; height: auto;">
+                    <img src='{% static "img/trench-coat.png" %}'style = "width: 150; height: auto;">
+                    <img src='{% static "img/jacket.png" %}'style = "width: 150; height: auto;">
+                    <img src='{% static "img/jumper.png" %}'style = "width: 150; height: auto;">
             
                 {% elif today.0 >= 5 %}
-                    <img src='{% static "fur-jacket.png" %}'style="width: 150; height: auto;">
-                    <img src='{% static "fur-coat.png" %}'style="width: 150; height: auto;">
-                    <img src='{% static "coat.png" %}'style="width: 150; height: auto;">
-                    <img src='{% static "pad.png" %}'style="width: 150; height: auto;">
+                    <img src='{% static "img/fur-jacket.png" %}'style="width: 150; height: auto;">
+                    <img src='{% static "img/fur-coat.png" %}'style="width: 150; height: auto;">
+                    <img src='{% static "img/coat.png" %}'style="width: 150; height: auto;">
+                    <img src='{% static "img/pad.png" %}'style="width: 150; height: auto;">
             
                 {% else %}
-                    <img src='{% static "scarf.png" %}' style="width: 150; height: auto;">
-                    <img src='{% static "beanie.png" %}'style="width: 150; height: auto;">
-                    <img src='{% static "mittens.png" %}'style="width: 150; height: auto;">
-                    <img src='{% static "puffer-coat.png" %}'style="width: 150; height: auto;">
+                    <img src='{% static "img/scarf.png" %}' style="width: 150; height: auto;">
+                    <img src='{% static "img/beanie.png" %}'style="width: 150; height: auto;">
+                    <img src='{% static "img/mittens.png" %}'style="width: 150; height: auto;">
+                    <img src='{% static "img/puffer-coat.png" %}'style="width: 150; height: auto;">
             
                 {% endif %}
             {% endif %}
