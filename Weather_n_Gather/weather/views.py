@@ -173,10 +173,10 @@ def get_weather(request):
     # 2000
 
     for item in r_item:
-        if(item.get("fcstDate") == today_date and item.get("fcstTime") == '0' + str(int(time) // 100 * 100+100) and item.get("category") == "TMP"):
+        if(item.get("fcstDate") == today_date and item.get("fcstTime") == '0' + str(int(time) // 100 * 100) and item.get("category") == "TMP"):
             today['기온'] = item["fcstValue"] 
 
-        if(item.get("fcstDate") == today_date and item.get("fcstTime") == '0' + str(int(time) // 100 * 100+100) and item.get("category") == "PTY"):
+        if(item.get("fcstDate") == today_date and item.get("fcstTime") == '0' + str(int(time) // 100 * 100) and item.get("category") == "PTY"):
             rainfall_code = item.get("fcstValue") 
 
             if rainfall_code == '1':
@@ -196,16 +196,16 @@ def get_weather(request):
 
             today['눈/비 소식'] = rainfall_state
 
-        if(item.get("fcstDate") == today_date and item.get("fcstTime") == '0' + str(int(time) // 100 * 100+100) and item.get("category") == "POP"):
+        if(item.get("fcstDate") == today_date and item.get("fcstTime") == '0' + str(int(time) // 100 * 100) and item.get("category") == "POP"):
             today['강수확률'] = item["fcstValue"] + '%'
 
-        if(item.get("fcstDate") == today_date and item.get("fcstTime") == '0' + str(int(time) // 100 * 100+100) and item.get("category") == "REH"):
+        if(item.get("fcstDate") == today_date and item.get("fcstTime") == '0' + str(int(time) // 100 * 100) and item.get("category") == "REH"):
             today['습도'] = item["fcstValue"] + '%'
 
-        if(item.get("fcstDate") == today_date and item.get("fcstTime") == '0' + str(int(time) // 100 * 100+100) and item.get("category") == "WSD"):
+        if(item.get("fcstDate") == today_date and item.get("fcstTime") == '0' + str(int(time) // 100 * 100) and item.get("category") == "WSD"):
             today['풍속'] = item["fcstValue"] + 'm/s'
 
-        if(item.get("fcstDate") == today_date and item.get("fcstTime") == '0' + str(int(time) // 100 * 100+100) and item.get("category") == "SKY"):
+        if(item.get("fcstDate") == today_date and item.get("fcstTime") == '0' + str(int(time) // 100 * 100) and item.get("category") == "SKY"):
             weather_code = item.get("fcstValue")
 
             if weather_code == '1':
@@ -238,90 +238,90 @@ def get_weather(request):
     today_result.append(reh)
     today_result.append(today_date)
 
-    return HttpResponse(res)
+    # return HttpResponse(res)
 
 
     # 다음날 출근 시간(0700)을 기준으로 날씨 정보 받아오기
-    # tomorrow = {}
+    tomorrow = {}
 
-    # for item in r_item:
-    #     if(item.get("fcstTime") == "0700" and item.get("fcstDate") == tomorrow_date and item.get("category") == "TMP"):
-    #         tomorrow['기온'] = item["fcstValue"]
+    for item in r_item:
+        if(item.get("fcstTime") == "0700" and item.get("fcstDate") == tomorrow_date and item.get("category") == "TMP"):
+            tomorrow['기온'] = item["fcstValue"]
 
-    #     if(item.get("fcstTime") == "0700" and item.get("fcstDate") == tomorrow_date and item.get("category") == "PTY"):
-    #         rainfall_code = item.get("fcstValue") 
+        if(item.get("fcstTime") == "0700" and item.get("fcstDate") == tomorrow_date and item.get("category") == "PTY"):
+            rainfall_code = item.get("fcstValue") 
 
-    #         if rainfall_code == '1':
-    #             rainfall_state = '비'
+            if rainfall_code == '1':
+                rainfall_state = '비'
 
-    #         elif rainfall_code == '2':
-    #             rainfall_state = '비/눈'
+            elif rainfall_code == '2':
+                rainfall_state = '비/눈'
 
-    #         elif rainfall_code == '3':
-    #             rainfall_state = '눈'
+            elif rainfall_code == '3':
+                rainfall_state = '눈'
 
-    #         elif rainfall_code == '4':
-    #             rainfall_state = '소나기'
+            elif rainfall_code == '4':
+                rainfall_state = '소나기'
 
-    #         else:
-    #             rainfall_state = '없음'
+            else:
+                rainfall_state = '없음'
 
-    #         tomorrow['눈/비 소식'] = rainfall_state
+            tomorrow['눈/비 소식'] = rainfall_state
 
-    #     if(item.get("fcstTime") == "0700" and item.get("fcstDate") == tomorrow_date and item.get("category") == "POP"):
-    #         tomorrow['강수확률'] = item["fcstValue"] + '%'
+        if(item.get("fcstTime") == "0700" and item.get("fcstDate") == tomorrow_date and item.get("category") == "POP"):
+            tomorrow['강수확률'] = item["fcstValue"] + '%'
 
-    #     if(item.get("fcstTime") == "0700" and item.get("fcstDate") == tomorrow_date and item.get("category") == "REH"):
-    #         tomorrow['습도'] = item["fcstValue"] + '%'
+        if(item.get("fcstTime") == "0700" and item.get("fcstDate") == tomorrow_date and item.get("category") == "REH"):
+            tomorrow['습도'] = item["fcstValue"] + '%'
 
-    #     if(item.get("fcstTime") == "0700" and item.get("fcstDate") == tomorrow_date and item.get("category") == "WSD"):
-    #         tomorrow['풍속'] = item["fcstValue"] + 'm/s'
+        if(item.get("fcstTime") == "0700" and item.get("fcstDate") == tomorrow_date and item.get("category") == "WSD"):
+            tomorrow['풍속'] = item["fcstValue"] + 'm/s'
 
-    #     if(item.get("fcstTime") == "0700" and item.get("fcstDate") == tomorrow_date and item.get("category") == "SKY"):
-    #         weather_code = item.get("fcstValue")
+        if(item.get("fcstTime") == "0700" and item.get("fcstDate") == tomorrow_date and item.get("category") == "SKY"):
+            weather_code = item.get("fcstValue")
 
-    #         if weather_code == '1':
-    #             weather_state = '맑음'
+            if weather_code == '1':
+                weather_state = '맑음'
 
-    #         elif weather_code == '3':
-    #             weather_state = '구름많음'
+            elif weather_code == '3':
+                weather_state = '구름많음'
 
-    #         else:
-    #             weather_state = '흐림'
+            else:
+                weather_state = '흐림'
 
-    #         tomorrow['날씨'] = weather_state
+            tomorrow['날씨'] = weather_state
 
-    # tmp = int(tomorrow['기온'])
-    # sky = tomorrow['날씨']
-    # pty = tomorrow['눈/비 소식']
-    # pop = tomorrow['강수확률']
-    # wsd = tomorrow['풍속']
-    # reh = tomorrow['습도']
+    tmp = int(tomorrow['기온'])
+    sky = tomorrow['날씨']
+    pty = tomorrow['눈/비 소식']
+    pop = tomorrow['강수확률']
+    wsd = tomorrow['풍속']
+    reh = tomorrow['습도']
 
-    # # tomorrow_result에 현재 날씨 정보 
+    # tomorrow_result에 현재 날씨 정보 
 
-    # tomorrow_result = []
-    # tomorrow_result.append(tmp)
-    # tomorrow_result.append(sky)
-    # tomorrow_result.append(pty)
-    # tomorrow_result.append(pop)
-    # tomorrow_result.append(wsd)
-    # tomorrow_result.append(reh)
-    # tomorrow_result.append(tomorrow_date)
+    tomorrow_result = []
+    tomorrow_result.append(tmp)
+    tomorrow_result.append(sky)
+    tomorrow_result.append(pty)
+    tomorrow_result.append(pop)
+    tomorrow_result.append(wsd)
+    tomorrow_result.append(reh)
+    tomorrow_result.append(tomorrow_date)
 
 
-    # print(base_date)
-    # print(base_time)
-    # print(res)
+    print(base_date)
+    print(base_time)
+    print(res)
     
-    # print(today)
-    # print(tomorrow)
-    # print(res)
+    print(today)
+    print(tomorrow)
+    print(res)
 
     
     # return HttpResponse(res)
     # weather.html로 보내 출력하기
-    # return render(request, 'weatherapp/weather.html', {'today': today_result, 'tomorrow':tomorrow_result})
+    return render(request, 'weatherapp/weather.html', {'today': today_result, 'tomorrow':tomorrow_result})
 
 
 
