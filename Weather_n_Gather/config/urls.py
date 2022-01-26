@@ -19,6 +19,6 @@ from weather import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', weather.views),
+    path('home/', views.get_weather),
 
 ]
