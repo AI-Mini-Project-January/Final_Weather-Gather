@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from weather import views as weather_views
 
 
 urlpatterns = [
@@ -9,4 +10,5 @@ urlpatterns = [
     path('kakaoLoginLogicRedirect/', views.kakaoLoginLogicRedirect),
     path('kakaoLogout/', views.kakaoLogout),
     path('kakaomessage_climate/', views.kakaoMessage_climate),
+    path('weather/', weather_views.get_weather),
 ]

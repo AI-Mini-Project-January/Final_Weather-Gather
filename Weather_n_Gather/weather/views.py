@@ -137,7 +137,7 @@ def get_weather(request):
 
 
     res = requests.get(url, params=params)
-    print(res)
+
     #json 값에서 item 뽑기
 
     r_dict = json.loads(res.text)
@@ -173,10 +173,10 @@ def get_weather(request):
     # 2000
 
     for item in r_item:
-        if(item.get("fcstDate") == today_date and item.get("fcstTime") == '0' + str(int(time) // 100 * 100) and item.get("category") == "TMP"):
+        if(item.get("fcstDate") == today_date and item.get("fcstTime") == '0' + str(int(time) // 100 * 100+100) and item.get("category") == "TMP"):
             today['기온'] = item["fcstValue"] 
 
-        if(item.get("fcstDate") == today_date and item.get("fcstTime") == '0' + str(int(time) // 100 * 100) and item.get("category") == "PTY"):
+        if(item.get("fcstDate") == today_date and item.get("fcstTime") == '0' + str(int(time) // 100 * 100+100) and item.get("category") == "PTY"):
             rainfall_code = item.get("fcstValue") 
 
             if rainfall_code == '1':
@@ -196,16 +196,16 @@ def get_weather(request):
 
             today['눈/비 소식'] = rainfall_state
 
-        if(item.get("fcstDate") == today_date and item.get("fcstTime") == '0' + str(int(time) // 100 * 100) and item.get("category") == "POP"):
+        if(item.get("fcstDate") == today_date and item.get("fcstTime") == '0' + str(int(time) // 100 * 100+100) and item.get("category") == "POP"):
             today['강수확률'] = item["fcstValue"] + '%'
 
-        if(item.get("fcstDate") == today_date and item.get("fcstTime") == '0' + str(int(time) // 100 * 100) and item.get("category") == "REH"):
+        if(item.get("fcstDate") == today_date and item.get("fcstTime") == '0' + str(int(time) // 100 * 100+100) and item.get("category") == "REH"):
             today['습도'] = item["fcstValue"] + '%'
 
-        if(item.get("fcstDate") == today_date and item.get("fcstTime") == '0' + str(int(time) // 100 * 100) and item.get("category") == "WSD"):
+        if(item.get("fcstDate") == today_date and item.get("fcstTime") == '0' + str(int(time) // 100 * 100+100) and item.get("category") == "WSD"):
             today['풍속'] = item["fcstValue"] + 'm/s'
 
-        if(item.get("fcstDate") == today_date and item.get("fcstTime") == '0' + str(int(time) // 100 * 100) and item.get("category") == "SKY"):
+        if(item.get("fcstDate") == today_date and item.get("fcstTime") == '0' + str(int(time) // 100 * 100+100) and item.get("category") == "SKY"):
             weather_code = item.get("fcstValue")
 
             if weather_code == '1':
@@ -238,7 +238,7 @@ def get_weather(request):
     today_result.append(reh)
     today_result.append(today_date)
 
-    # return HttpResponse(res)
+    
 
 
     # 다음날 출근 시간(0700)을 기준으로 날씨 정보 받아오기
@@ -316,12 +316,11 @@ def get_weather(request):
     
     print(today)
     print(tomorrow)
-    print(res)
 
     
     # return HttpResponse(res)
     # weather.html로 보내 출력하기
-    return render(request, 'weatherapp/weather.html', {'today': today_result, 'tomorrow':tomorrow_result})
+    return render(request, 'hometemplate/index.html', {'today': today_result, 'tomorrow':tomorrow_result})
 
 
 
