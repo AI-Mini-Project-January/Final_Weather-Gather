@@ -41,8 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     '게시판',
     'user',
-    'weather',
-    'hometemplate',
 ]
 
 MIDDLEWARE = [
