@@ -31,11 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-<<<<<<< HEAD
     'weather',
-=======
     'hometemplate',
->>>>>>> b8c6385e04d39518349614988f94cbb949e29a90
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -127,13 +124,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-<<<<<<< HEAD
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend' , 
-    ]
-
+]
 AUTH_USER_MODEL = 'user.User'
-=======
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
->>>>>>> b8c6385e04d39518349614988f94cbb949e29a90
