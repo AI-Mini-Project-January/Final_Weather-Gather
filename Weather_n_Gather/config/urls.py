@@ -24,6 +24,9 @@ urlpatterns = [
 
 =======
     path('home/', views.get_weather),
+<<<<<<< HEAD
+
+=======
     path('hometem/', include('hometemplate.urls')),
     
 >>>>>>> b8c6385e04d39518349614988f94cbb949e29a90
