@@ -19,6 +19,12 @@ from weather import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+<<<<<<< HEAD
     path('home/', include('hometemplate.urls')),
 
+=======
+    path('home/', views.get_weather),
+    path('hometem/', include('hometemplate.urls')),
+    
+>>>>>>> b8c6385e04d39518349614988f94cbb949e29a90
 ]
