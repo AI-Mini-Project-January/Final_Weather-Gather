@@ -50,29 +50,32 @@
                     <tbody>
                         <tr>
                             <td>
+                                <!-- 이 부분이 날씨 아이콘 -->
                                 {% if today.2 == '소나기' %}
-                                    <img src='{% static "img/shower.svg" %}' style = "width: 300; height: 300">
+                                    <img src='{% static "img/shower.svg" %}' style = "width: 200; height: 200">
                                 {% elif today.2 == '눈' %}
-                                    <img src='{% static "img/snow.svg" %}'style = "width: 300; height: 300">
+                                    <img src='{% static "img/snow.svg" %}'style = "width: 200; height: 200">
                                 {% elif today.2 == '비/눈' %}
-                                    <img src='{% static "img/sleet.svg" %}'style = "width: 300; height: 300">
+                                    <img src='{% static "img/sleet.svg" %}'style = "width: 200; height: 200">
                                 {% elif today.2 == '비' %}
-                                    <img src='{% static "img/rain.svg" %}'style = "width: 300; height: 300">
+                                    <img src='{% static "img/rain.svg" %}'style = "width: 200; height: 200">
                                 {% else %}
                                     {% if today.1 == '맑음' %}
-                                        <img src='{% static "img/clear-day.svg" %}'style = "width: 300; height: 300">
+                                        <img src='{% static "img/clear-day.svg" %}'style = "width: 200; height: 200">
                                     {% elif today.1 == '구름많음' %}
-                                        <img src='{% static "img/cloudy.svg" %}'style = "width: 300; height: 300">
+                                        <img src='{% static "img/cloudy.svg" %}'style = "width: 200; height: 200">
                                     {% else %}
-                                        <img src='{% static "img/overcast.svg" %}'style = "width: 300; height: 300">
+                                        <img src='{% static "img/overcast.svg" %}'style = "width: 200; height: 200">
                                     {% endif%}
                                 {% endif %}
                             </td>
+                            <!-- wind 바람 아이콘, raindrops 강수 확률 -->
                             <td><img src='{% static "img/wind.svg" %}'></td>
                             <td><img src='{% static "img/raindrops.svg" %}'></td>
                             <br>
                             <span>
                                 <h2>
+                                    <!-- 날씨 상태 맑음, 눈, 비 등등 -->
                                     {% if today.2 != '없음' %}
                                         {{ today.2 }}
                                     {% else %}
@@ -86,6 +89,7 @@
                     </tbody>
             
                     <span>
+                        <!-- 기온 3℃ -->
                         현재 기온 {{ today.0 }}℃
                     </span>
                 
