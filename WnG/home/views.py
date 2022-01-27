@@ -329,7 +329,7 @@ def grid(lat, lng):
 
 
 def home(request):
-     #위도, 경도 함수 호출
+    #위도, 경도 함수 호출
     lat, lng = get_location(request)
     # print(lat, lng)
 
@@ -585,16 +585,16 @@ def home(request):
     
     # return HttpResponse(res)
     # weather.html로 보내 출력하기
-    return render(request, 'templates/weather.html', {'today': today_result, 'tomorrow':tomorrow_result})
+    return render(request, 'home/weather.html', {'today': today_result, 'tomorrow':tomorrow_result})
 
 
 
 
-  ################################## kakaotalk service
-  ##################################
-  ##################################
+################################## kakaotalk service
+##################################
+##################################
 
-  
+
 # Create your views here.
 
 # def kakaologinhome(request):
@@ -604,7 +604,7 @@ def kakaologin(request):
     _context = {'check':False}
     if request.session.get('access_token'):
         _context['check'] = True
-    return render(request, 'templates/kakaologinhome.html', _context)
+    return render(request, 'home/kakaologinhome.html', _context)
 
 def kakaoLoginLogic(request):
     _restApiKey = '5d03e24af9d6c95a6f526e3308d8879d' # 입력필요
@@ -621,13 +621,13 @@ def kakaoLoginLogicRedirect(request):
     _result = _res.json()
     request.session['access_token'] = _result['access_token']
     request.session.modified = True
-    return render(request, 'templates/kakaologinSuccess.html')
+    return render(request, 'home/kakaologinSuccess.html')
 
 def kakaoLogout(request):
     _token = request.session['access_token']
     _url = 'https://kapi.kakao.com/v1/user/logout'
     _header = {
-      'Authorization': f'bearer {_token}'
+    'Authorization': f'bearer {_token}'
     }
     # _url = 'https://kapi.kakao.com/v1/user/unlink'
     # _header = {
@@ -639,7 +639,7 @@ def kakaoLogout(request):
         del request.session['access_token']
         return render(request, 'templates/kakaologoutSuccess.html')
     else:
-        return render(request, 'templates/kakaologoutError.html')
+        return render(request, 'home/kakaologoutError.html')
 
 #날씨 요약 정보
 def kakaoMessage_climate(request):
@@ -671,7 +671,7 @@ def kakaoMessage_climate(request):
     _token = request.session['access_token']
 
     _header = {
-      'Authorization': f'bearer {_token}'
+    'Authorization': f'bearer {_token}'
     }
     
     # _nickname = "희동이누나"    #String
@@ -700,4 +700,4 @@ def kakaoMessage_climate(request):
 
     _res = requests.post(url_message, headers=_header, data=data)
     _result = _res.json()
-    return render(request, 'templates/kakaoMessageSent.html')
+    return render(request, 'home/kakaoMessageSent.html')
