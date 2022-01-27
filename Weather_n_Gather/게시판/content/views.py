@@ -7,7 +7,6 @@ from user.models import User
 from .models import Feed, Like, Bookmark
 import os
 from django.shortcuts import redirect
-from .forms import ProfileForm
 from user.models import User
 
 # config.settings에서 MEDIA_ROOT 가져올꺼임
