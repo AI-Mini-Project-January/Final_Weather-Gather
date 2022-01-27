@@ -46,28 +46,28 @@
             <div class = "blur" align = "center">
 
                 <h3>현재 날씨</h3>
-                <div class = "imageWeather">
+                <div>
                     <tbody>
                         <tr>
                             <td>
-                                <!-- 이 부분이 날씨 아이콘 -->
                                 {% if today.2 == '소나기' %}
-                                    <img src='{% static "img/shower.svg" %}' style = "width: 200; height: 200">
+                                    <img src='{% static "img/shower.svg" %}' style = "width: 220; height: 220">
                                 {% elif today.2 == '눈' %}
-                                    <img src='{% static "img/snow.svg" %}'style = "width: 200; height: 200">
+                                    <img src='{% static "img/snow.svg" %}'style = "width: 220; height: 220">
                                 {% elif today.2 == '비/눈' %}
-                                    <img src='{% static "img/sleet.svg" %}'style = "width: 200; height: 200">
+                                    <img src='{% static "img/sleet.svg" %}'style = "width: 220; height: 220">
                                 {% elif today.2 == '비' %}
-                                    <img src='{% static "img/rain.svg" %}'style = "width: 200; height: 200">
+                                    <img src='{% static "img/rain.svg" %}'style = "width: 220; height: 220">
                                 {% else %}
                                     {% if today.1 == '맑음' %}
-                                        <img src='{% static "img/clear-day.svg" %}'style = "width: 200; height: 200">
+                                        <img src='{% static "img/clear-day.svg" %}'style = "width: 220; height: 220">
                                     {% elif today.1 == '구름많음' %}
-                                        <img src='{% static "img/cloudy.svg" %}'style = "width: 200; height: 200">
+                                        <img src='{% static "img/cloudy.svg" %}' style = "width: 220; height: 220">
                                     {% else %}
-                                        <img src='{% static "img/overcast.svg" %}'style = "width: 200; height: 200">
+                                        <img src='{% static "img/overcast.svg" %}'style = "width: 220; height: 220">
                                     {% endif%}
                                 {% endif %}
+            
                             </td>
                             <!-- wind 바람 아이콘, raindrops 강수 확률 -->
                             <td><img src='{% static "img/wind.svg" %}'style = "width: 200; height: 200"></td>
@@ -87,7 +87,6 @@
                             
                         </tr>
                     </tbody>
-            
                     <span>
                         <!-- 기온 3℃ -->
                         현재 기온 {{ today.0 }}℃
@@ -95,18 +94,24 @@
                 
                     
                     
+    
+                    <div>{% if today.2 != '없음' %}
+                            {{ today.2 }}
+                        {% else %}
+                            {{ today.1 }} 
+                        {% endif %}
+                    </div> 
                     
                     <span id = weather_box>
-                        
+                        <img src='{% static "img/wind.svg" %}' style = "width: 220; height: 220">
                         <span>바람 {{ today.4 }}</span>
     
                         <span>
-            
-                            <span> 강수 확률 {{ today.3 }}%</span>
-                    
+                            <img src='{% static "img/raindrops.svg" %}' style = "width: 220; height: 220">
+                            <span> 강수 확률 {{ today.3 }}</span>
                         </span>
-    
                     </span>
+                </td>
                     
                 </div>
 
@@ -120,7 +125,7 @@
                 <h3>오늘은 이렇게 입으시는 건 어때요?</h3>
             
             
-                <td> 
+                <td>
                     {% if today.6 >= "20220131" and today.6 <= "20220202" %}
                         <img src = '{% static "img/hanbok.png" %}' style = "width: 150; height: auto;">
                         <img src = '{% static "img/hanbok (2).png" %}' style = "width: 150; height: auto;">
