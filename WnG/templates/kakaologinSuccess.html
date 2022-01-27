@@ -45,17 +45,8 @@
     <h1 class="text-light"><span>weather & Gather</span></h1>
     <h1 class="text-light"><span>로그인 완료</span></h1>
     <h2 class="text-light"><span>오늘의 날씨 정보와 간단한 옷차림 요약을 나에게 카톡으로 보내보세요</span></h2>
-    {% comment %} <button style = "color:white">
+    <button style = "color:white">
         <a href="/home/kakaomessage_climate" class = "text-black"><span>깨똑 보내기</span></a>
-    </button> {% endcomment %}
-    <button type = "카카오 메시지 보내기" a href = "/home/kakaomessage_climate">
-      <img src = '/static/img/kakaologo.jpg' width = 50, height = 50 />
-   </button>
-    <br>
-    <br>
-    <h2 class = "text-light"><span>Home 화면으로 돌아가기></span></h2>
-    <button>
-        <a href="/home/index" class = "text-black"><span>HOME</span></a>
     </button>
     <br>
     <br>
@@ -65,10 +56,15 @@
             <img src = '/static/img/kakaologo.jpg' width = 50, height = 50 />
         </button> {% endcomment %}
         <button style = "color:white">
-          <a href="/home/kakaomessage_climate" class = "text-black"><span>로그아웃</span></a>
+          <a href="/home/kakaoLogout" class = "text-black"><span>로그아웃</span></a>
+        </button>
+      <br>
+      <br>
+      <h2 class = "text-light"><span>Home 화면으로 돌아가기></span></h2>
+      <button>
+          <a href="/home/index" class = "text-black"><span>HOME</span></a>
       </button>
     </form>
-
     </div>  
  <!-- Vendor JS Files -->
 <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
