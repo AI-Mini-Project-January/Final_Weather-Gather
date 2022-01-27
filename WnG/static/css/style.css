@@ -267,10 +267,10 @@ nav{
   
   .todayWeather{
     width: 80%;
-    height: 400px;
+    height: 600px;
     position: absolute;
     left: 10px;
-    top: 400px;
+    top: 100px;
     
   }
   .clothes {
@@ -287,7 +287,8 @@ nav{
     border-radius: 10px;
     border: 1px solid rgba(255,255,255,0.2);
     width: 80%;
-    height: 400px;
+    height: 600px;
+    top: 100px;
   }
   
   .blur2 {
@@ -298,7 +299,11 @@ nav{
     height: 300px;
   }
   
-  
+  .wstate {
+    font-size: 45px;
+
+  }
+
   
   #window span {
     /* float:right; */
@@ -607,7 +612,7 @@ nav{
   height: 400px;
   position: absolute;
   left: 10px;
-  top: 400px;
+  top: 300px;
   
 }
 .clothes {
@@ -615,7 +620,7 @@ nav{
   height: 310px;
   position: absolute;
   left: 10px;
-  top : 920px;
+  top : 720px;
   
 }
 
@@ -625,6 +630,7 @@ nav{
   border: 1px solid rgba(255,255,255,0.2);
   width: 80%;
   height: 400px;
+  top: 300px;
 }
 
 .blur2 {
@@ -633,6 +639,7 @@ nav{
   border: 1px solid rgba(255,255,255,0.2);
   width: 80%;
   height: 300px;
+  top : 720px;
 }
 
 
