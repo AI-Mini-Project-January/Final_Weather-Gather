@@ -1,5 +1,5 @@
 import profile
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import User
@@ -7,15 +7,12 @@ from uuid import uuid4
 import os
 from config.settings import MEDIA_ROOT
 from django.contrib.auth.hashers import make_password
-from django.contrib.auth.forms import UserCreationForm
-
-
 
 # Create your views here.
 # Join이라는 함수 실행하면 get으로 호출했을 때 user앱 폴더에 있는 join.html을 보여줘라
 class Join(APIView):
     def get(self, request):
-        return render(request, "templates/join.html")
+        return render(request, "user/join.html")
     
     def post(self, request):
         # TODO 회원가입, 단방향은 암호화만되고 양방향은 복호화도 가능, 비밀번호는 직원도 몰라야하니 단방향
@@ -33,15 +30,9 @@ class Join(APIView):
         
         return Response(status=200)
 
-# from django.contrib.auth import authenticate, login, get_user_model
-# from .forms import UserForm
-
-# User = get_user_model()
-
 class Login(APIView):
     def get(self, request):
-        #return render(request, "templates/testIndex.html")
-        return render(request, "templates/login.html")
+        return render(request, "user/login.html")
 
     def post(self, request):
         #TODO 로그인
@@ -59,10 +50,8 @@ class Login(APIView):
             # 세션에 사용자아이디인 identi 넣음
             # session['identi'] 찾으면 내가 저장한 아이디가 나온다
             # 아이디를 세션정보에 넣게 되면 아이디를 가지고 user=User.objects.filter() 해서 
-            # user의 닉네임이나 나이 등을 가져올 수 있게 됨 
-            
+            # user의 닉네임이나 나이 등을 가져올 수 있게 됨   
             request.session['identi'] = identi
-           
             return Response(status=200)
         else:
             return Response(status=400, data=dict(message="회원정보가 잘못되었습니다."))
@@ -70,8 +59,7 @@ class Login(APIView):
 class Logout(APIView):
     def get(self, request):
         request.session.flush()
-        #return render(request, "templates/testIndex.html")
-        return render(request, "templates/login.html")
+        return render(request, "user/login.html")
 
 # UploadProfile 로직은 파일이랑 아이디를 불러옴
 # 파일은 Feed 생성할 때 처럼 이미지 이름바꿔주는방식으로 랜덤으로 고유값 만들어주고 media에 저장
@@ -100,6 +88,7 @@ class UploadProfile(APIView):
         user.profile_image = profile_image
         user.save()
 
+<<<<<<< HEAD
         return Response(status = 200)
 
 
@@ -413,3 +402,6 @@ def profile_delete_view(request):
 
 # password 꺼내오는 것 
     request.POST.get('password')
+=======
+        return Response(status = 200)
+>>>>>>> 1c454b810b03251a813f35f5b1bee8aaba5b2de4

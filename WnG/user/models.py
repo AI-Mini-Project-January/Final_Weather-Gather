@@ -1,7 +1,12 @@
+<<<<<<< HEAD
 from pickle import NONE
 from tkinter import Image
+=======
+from django.contrib.auth.models import UserManager 
+from django.contrib.auth.base_user import AbstractBaseUser
+>>>>>>> 1c454b810b03251a813f35f5b1bee8aaba5b2de4
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, UserManager, PermissionsMixin
+
 
 # Create your models here.
 # 커스텀 유저만들꺼임 -> AbstractBaseUser 이거를 상속받아서 만들면 그게 유저필드가 됨
@@ -12,8 +17,9 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, UserMa
 # 비밀번호 -> 장고에서 만들어주는걸로 디폴트
 # 나이 -> 
 # 프로필 사진 저장
-# class User(AbstractBaseUser):
+class User(AbstractBaseUser):
     
+<<<<<<< HEAD
 #     profile_image = models.TextField()
 #     nickname = models.CharField(max_length=24, unique=True)
 #     identi= models.CharField(max_length=24, unique=True)
@@ -69,8 +75,16 @@ class User(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return self.user_id
 
+=======
+    profile_image = models.TextField()
+    nickname = models.CharField(max_length=24, unique=True)
+    identi= models.CharField(max_length=24, unique=True)
+    age = models.IntegerField()
+# 실제로 유저를 선택하면 그 유저의 이름을 어떤필드를 쓸거냐
+    USERNAME_FIELD = 'nickname'
+    
+# Meta 안해주면 user_user 테이블이 됨
+>>>>>>> 1c454b810b03251a813f35f5b1bee8aaba5b2de4
     class Meta:
         db_table = "User"
-        verbose_name = "사용자"
-        verbose_name_plural = "사용자"
 
