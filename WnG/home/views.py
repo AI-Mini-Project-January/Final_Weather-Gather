@@ -70,11 +70,11 @@ def get_weather(request):
 
     #위도, 경도 함수 호출
     lat, lng = get_location(request)
-    print(lat, lng)
+    # print(lat, lng)
 
     # x좌표, y좌표 함수 호출
     x, y = grid(lat, lng)
-    print(x,y)
+    # print(x,y)
 
     # 기상청 단기예보 api
     url = "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst"
@@ -98,7 +98,7 @@ def get_weather(request):
 
     hour = today.hour
     minute = today.minute
-    print(time)
+    # print(time)
     if hour < 2 or (hour == 2 and minute <= 10): # 00:00 1:59
         base_date = yesterday_date
         base_time = "2300"
@@ -310,17 +310,17 @@ def get_weather(request):
     tomorrow_result.append(tomorrow_date)
 
 
-    print(base_date)
-    print(base_time)
-    print(res)
+    # print(base_date)
+    # print(base_time)
+    # print(res)
     
-    print(today)
-    print(tomorrow)
+    # print(today)
+    # print(tomorrow)
 
     
     # return HttpResponse(res)
     # weather.html로 보내 출력하기
-    return render(request, 'templates/weather.html', {'today': today_result, 'tomorrow':tomorrow_result})
+    return render(request, 'templates/home.html', {'today': today_result, 'tomorrow':tomorrow_result})
 
 
 
