@@ -181,16 +181,12 @@ def home(request):
         fcstTime = '0' + str(int(time) // 100 * 100 + 100)
 
     else :
-
         if int(time) // 100 == 23:
-
             fcstTime = "0000"
-
             today_date = tomorrow_date
-
         else:
-
             fcstTime = str(int(time) // 100 * 100  + 100)
+        
 
     for item in r_item:
         if(item.get("fcstDate") == today_date and item.get("fcstTime") == fcstTime and item.get("category") == "TMP"):
