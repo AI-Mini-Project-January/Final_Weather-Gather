@@ -50,5 +50,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     # REQUIRED_FIELDS = ['email']
         
     class Meta:
+        #model = User
         db_table = "User"
 
