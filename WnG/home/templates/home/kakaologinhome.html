@@ -40,7 +40,7 @@ function getCookie(name) {
             outline:none;
         }
     </style>
-<div id = "kakao">
+<div id = "kakao" align="center">
     <h1 class="text-light"><span>weather & Gather</span></h1>
       {% if check %}
         <div id = "kakao" class = "hero-container">
@@ -52,7 +52,7 @@ function getCookie(name) {
                 </form>
         </div>
     {% else %}
-        <div id="kakao">
+        <div id="kakao" align="center">
           <h2 class = "text-light"><span>카카오 로그인</span></h2>
                 <form action="/home/kakaoLoginLogic" method="GET">
                     <button type = "카카오 로그인">
@@ -63,6 +63,7 @@ function getCookie(name) {
     {% endif %}
   </div>
 </body>
+<br><br><br>
 <footer>"designed Freepik, justicon, Nhor Phai from Flaticon"
     Copyright © 2022 Bas Milius. All rights reserved.
 </footer>
