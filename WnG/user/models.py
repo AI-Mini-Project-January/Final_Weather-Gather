@@ -11,20 +11,21 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, UserMa
 # 비밀번호 -> 장고에서 만들어주는걸로 디폴트
 # 나이 -> 
 # 프로필 사진 저장
-# class User(AbstractBaseUser):
+
+class User(AbstractBaseUser):
     
-#     profile_image = models.TextField()
-#     nickname = models.CharField(max_length=24, unique=True)
-#     identi= models.CharField(max_length=24, unique=True)
-#     age = models.IntegerField()
-# # 실제로 유저를 선택하면 그 유저의 이름을 어떤필드를 쓸거냐
-#     USERNAME_FIELD = 'nickname'
+    profile_image = models.TextField()
+    nickname = models.CharField(max_length=24, unique=True)
+    identi= models.CharField(max_length=24, unique=True)
+    age = models.IntegerField()
+# 실제로 유저를 선택하면 그 유저의 이름을 어떤필드를 쓸거냐
+    USERNAME_FIELD = 'nickname'
 
-#     objects = UserManager()
+    objects = UserManager()
 
-# # Meta 안해주면 user_user 테이블이 됨
-#     class Meta:
-#         db_table = "User"
+# Meta 안해주면 user_user 테이블이 됨
+    class Meta:
+        db_table = "User"
 
 class UserManager(BaseUserManager):
     use_in_migrations = True
@@ -39,17 +40,5 @@ class UserManager(BaseUserManager):
         return user
 
 
-class User(AbstractBaseUser, PermissionsMixin):
-    objects = UserManager()
-    nickname = models.CharField(max_length=24,null=False,unique=True)
-    profile_image = models.TextField()
-    identi= models.CharField(max_length=24, unique=True)
-    age = models.IntegerField()
 
-    USERNAME_FIELD = 'nickname'
-    # REQUIRED_FIELDS = ['email']
-        
-    class Meta:
-        #model = User
-        db_table = "User"
 
