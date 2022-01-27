@@ -1,4 +1,7 @@
+{% load static %}
+
 <!doctype html>
+<link rel="stylesheet" type="text/css" href="{% static '../static/css/style.css' %}">
 <html lang="en">
 <head>
     <!-- Required meta tags -->
@@ -242,13 +245,12 @@
     <div style="text-align: left">
         <div style="display: flex; flex-direction: row; margin: 20px 0">
             <div style="font-size: 26px; margin-right: 40px">
-                ID: {{user.identi}}
+                {{user.identi}}
             </div>
             <button id = "button_profile_upload" style="margin-right: 40px">프로필 사진 편집</button>
             
             <!-- 이미지를 올렸을 때가 onChange가 실행될 때임 -->
             <input type="file" id="input_fileupload" onChange="profile_upload();" style="display: none"/> 
-            <span class = "material-icons-outlined" style="margin-right: 40px">settings</span>
         </div>
         <div>
             <b>닉네임: {{user.nickname}}</b>

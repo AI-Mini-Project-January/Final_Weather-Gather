@@ -177,7 +177,9 @@ def home(request):
 
     
     if 0<= int(time) // 100 <=9 :
+
         fcstTime = '0' + str(int(time) // 100 * 100 + 100)
+
     else :
         if int(time) // 100 == 23:
             fcstTime = "0000"
