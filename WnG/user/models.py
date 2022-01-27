@@ -1,5 +1,10 @@
+<<<<<<< HEAD
+from pickle import NONE
+from tkinter import Image
+=======
 from django.contrib.auth.models import UserManager 
 from django.contrib.auth.base_user import AbstractBaseUser
+>>>>>>> 1c454b810b03251a813f35f5b1bee8aaba5b2de4
 from django.db import models
 
 
@@ -14,6 +19,63 @@ from django.db import models
 # 프로필 사진 저장
 class User(AbstractBaseUser):
     
+<<<<<<< HEAD
+#     profile_image = models.TextField()
+#     nickname = models.CharField(max_length=24, unique=True)
+#     identi= models.CharField(max_length=24, unique=True)
+#     age = models.IntegerField()
+# # 실제로 유저를 선택하면 그 유저의 이름을 어떤필드를 쓸거냐
+#     USERNAME_FIELD = 'nickname'
+
+#     objects = UserManager()
+
+# # Meta 안해주면 user_user 테이블이 됨
+#     class Meta:
+#         db_table = "User"
+
+
+
+class UserManager(BaseUserManager):
+    def create_user(self, nickname, profile_image, age, password, **kwargs):
+        user = self.model(
+            nickname=nickname,
+            profile_image=profile_image,
+            age=age,
+            password=password,
+            **kwargs
+            )
+
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, nickname, password, profile_imag=NONE, age=NONE, **kwargs):
+        user = self.model(
+            nickname=nickname,
+            age=age,
+            is_staff=True, 
+            is_superuser=True,
+            **kwargs
+            )
+        user.save(using=self._db)
+        return user    
+
+
+class User(AbstractBaseUser, PermissionsMixin):
+    objects = UserManager()
+    nickname = models.CharField(max_length=24,verbose_name='닉네임',null=False,unique=True)
+    identi= models.CharField(max_length=24,verbose_name='아이디', unique=True)
+    age = models.IntegerField(verbose_name='나이', null=True )
+    # profile_image = models.TextField()
+    profile_image = models.ImageField(upload_to="board/images", blank=True)
+    USERNAME_FIELD = 'nickname'
+    # REQUIRED_FIELDS = ['age']
+        
+
+    def __str__(self):
+        return self.user_id
+
+=======
     profile_image = models.TextField()
     nickname = models.CharField(max_length=24, unique=True)
     identi= models.CharField(max_length=24, unique=True)
@@ -22,6 +84,7 @@ class User(AbstractBaseUser):
     USERNAME_FIELD = 'nickname'
     
 # Meta 안해주면 user_user 테이블이 됨
+>>>>>>> 1c454b810b03251a813f35f5b1bee8aaba5b2de4
     class Meta:
         db_table = "User"
 

@@ -7,4 +7,9 @@ urlpatterns = [
     path('login', Login.as_view()),
     path('logout', Logout.as_view()),
     path('profile/upload', UploadProfile.as_view()),
+<<<<<<< HEAD
+    path('profile/delete/', views.profile_delete_view, name='profile_delete'),
+]
+=======
 ] 
+>>>>>>> 1c454b810b03251a813f35f5b1bee8aaba5b2de4

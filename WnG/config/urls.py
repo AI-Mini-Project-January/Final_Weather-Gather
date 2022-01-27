@@ -19,15 +19,29 @@ from content.views import Main # content 안에 있는 views에서 Main을 가�
 from django.conf.urls.static import static
 from .settings import MEDIA_URL, MEDIA_ROOT
 from user import views
+<<<<<<< HEAD
+#from myPage import views
+from django.conf.urls.static import static
+from django.conf import settings
+
+=======
 from home import views
+>>>>>>> 1c454b810b03251a813f35f5b1bee8aaba5b2de4
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('main/', Main.as_view()), # main으로 들어갈 때 마다 content 안에 views가 실행 그리고 실행될때마다 Feed에 있는 전체 데이터를 긁어옴
     path('content/', include('content.urls')),
     path('user/', include('user.urls')),
+<<<<<<< HEAD
+    #path('myPage/', include('myPage.urls')),
+]
+urlpatterns += \
+    static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
+=======
     path('home/', include('home.urls')),
 ] 
 
 # media에 이미지파일 올리면 그 이미지 파일을 조회할 수 있게 해줌
 urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)
+>>>>>>> 1c454b810b03251a813f35f5b1bee8aaba5b2de4
