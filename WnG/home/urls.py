@@ -14,5 +14,5 @@ urlpatterns = [
     path('kakaoLoginLogicRedirect/', views.kakaoLoginLogicRedirect),
     path('kakaoLogout/', views.kakaoLogout),
     path('kakaomessage_climate/', views.kakaoMessage_climate),
-    path('weather/', weather_views.get_weather), # 날씨 정보
+    # path('weather/', weather_views.get_weather), # 날씨 정보
 ]
