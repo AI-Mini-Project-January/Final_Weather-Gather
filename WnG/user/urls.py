@@ -8,4 +8,7 @@ urlpatterns = [
     path('logout', Logout.as_view()),
     path('profile/upload', UploadProfile.as_view()),
     path('profile/delete/', views.profile_delete_view, name='profile_delete'),
+    
+    path('tempLogin', Login.as_view()),
+    path('tempJoin', Join.as_view()),
 ]

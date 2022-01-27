@@ -12,7 +12,8 @@ from django.contrib.auth.hashers import make_password
 # Join이라는 함수 실행하면 get으로 호출했을 때 user앱 폴더에 있는 join.html을 보여줘라
 class Join(APIView):
     def get(self, request):
-        return render(request, "user/join.html")
+        return render(request, "user/tempJoin.html")
+        #return render(request, "user/join.html")
     
     def post(self, request):
         # TODO 회원가입, 단방향은 암호화만되고 양방향은 복호화도 가능, 비밀번호는 직원도 몰라야하니 단방향
@@ -32,7 +33,8 @@ class Join(APIView):
 
 class Login(APIView):
     def get(self, request):
-        return render(request, "user/login.html")
+        #return render(request, "user/login.html")
+        return render(request, "user/tempLogin.html")
 
     def post(self, request):
         #TODO 로그인
@@ -59,7 +61,8 @@ class Login(APIView):
 class Logout(APIView):
     def get(self, request):
         request.session.flush()
-        return render(request, "user/login.html")
+        #return render(request, "user/login.html")
+        return render(request, "user/tempLogin.html")
 
 # UploadProfile 로직은 파일이랑 아이디를 불러옴
 # 파일은 Feed 생성할 때 처럼 이미지 이름바꿔주는방식으로 랜덤으로 고유값 만들어주고 media에 저장
