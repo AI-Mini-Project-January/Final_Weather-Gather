@@ -53,13 +53,13 @@ class Main(APIView):
         
         #만약 로그인을 안하고 /main에 접속한 경우 로그인하라고 함
         if identi is None:
-            return render(request, "user/login.html")
+            return render(request, "user/tempLogin.html")
         
         user = User.objects.filter(identi=identi).first()
         
         #만약 세션정보에 아이디가 이미 있었는데 그 아이디가 회원이 아닌경우
         if user is None:
-            return render(request, "user/login.html")
+            return render(request, "user/tempLogin.html")
         
         return render(request, "config/main.html", context=dict(feeds=feed_list, user=user))
 
@@ -99,13 +99,13 @@ class Profile(APIView):
         
         #만약 로그인을 안하고 /main에 접속한 경우 로그인하라고 함
         if identi is None:
-            return render(request, "user/login.html")
+            return render(request, "user/tempLogin.html")
         
         user = User.objects.filter(identi=identi).first()
         
         #만약 세션정보에 아이디가 이미 있었는데 그 아이디가 회원이 아닌경우
         if user is None:
-            return render(request, "user/login.html")
+            return render(request, "user/tempLogin.html")
         
         return render(request, 'board/profile.html', context=dict(user=user))
 

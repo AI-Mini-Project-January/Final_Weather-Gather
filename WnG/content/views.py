@@ -61,13 +61,13 @@ class Main(APIView):
         
         #만약 로그인을 안하고 /main에 접속한 경우 로그인하라고 함
         if identi is None:
-            return render(request, "user/login.html")
+            return render(request, "user/tempLogin.html")
         
         user = User.objects.filter(identi=identi).first()
         
         #만약 세션정보에 아이디가 이미 있었는데 그 아이디가 회원이 아닌경우
         if user is None:
-            return render(request, "user/login.html")
+            return render(request, "user/tempLogin.html")
         
         return render(request, "config/main.html", context=dict(feeds=feed_list, user=user))
 
@@ -115,13 +115,13 @@ class Profile(APIView):
         
         #만약 로그인을 안하고 /main에 접속한 경우 로그인하라고 함
         if identi is None:
-            return render(request, "user/login.html")
+            return render(request, "user/tempLogin.html")
         
         user = User.objects.filter(identi=identi).first()
         
         #만약 세션정보에 아이디가 이미 있었는데 그 아이디가 회원이 아닌경우
         if user is None:
-            return render(request, "user/login.html")
+            return render(request, "user/tempLogin.html")
         # like_feed_list(내가 좋아요를 누른 피드리스트)는 피드에서 내가 좋아요를 누른 id값이 내가 좋아요를 누른 리스트에 있는거
         # id__n 은 Feed에 있는 id중에 feed id 리스트를 포함하고 있는 것만 걸림
         # flat = True 안하면 리스트로 안나옴
