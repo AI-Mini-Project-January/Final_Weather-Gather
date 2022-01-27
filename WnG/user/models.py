@@ -1,11 +1,8 @@
-<<<<<<< HEAD
 from pickle import NONE
 from tkinter import Image
-=======
-from django.contrib.auth.models import UserManager 
 from django.contrib.auth.base_user import AbstractBaseUser
->>>>>>> 1c454b810b03251a813f35f5b1bee8aaba5b2de4
 from django.db import models
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, UserManager, PermissionsMixin
 
 
 # Create your models here.
@@ -17,9 +14,8 @@ from django.db import models
 # 비밀번호 -> 장고에서 만들어주는걸로 디폴트
 # 나이 -> 
 # 프로필 사진 저장
-class User(AbstractBaseUser):
+
     
-<<<<<<< HEAD
 #     profile_image = models.TextField()
 #     nickname = models.CharField(max_length=24, unique=True)
 #     identi= models.CharField(max_length=24, unique=True)
@@ -75,7 +71,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return self.user_id
 
-=======
     profile_image = models.TextField()
     nickname = models.CharField(max_length=24, unique=True)
     identi= models.CharField(max_length=24, unique=True)
@@ -84,7 +79,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'nickname'
     
 # Meta 안해주면 user_user 테이블이 됨
->>>>>>> 1c454b810b03251a813f35f5b1bee8aaba5b2de4
     class Meta:
         db_table = "User"
 

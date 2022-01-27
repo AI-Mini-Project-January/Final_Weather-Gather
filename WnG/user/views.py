@@ -1,5 +1,5 @@
 import profile
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import User
@@ -88,7 +88,6 @@ class UploadProfile(APIView):
         user.profile_image = profile_image
         user.save()
 
-<<<<<<< HEAD
         return Response(status = 200)
 
 
@@ -400,8 +399,3 @@ def profile_delete_view(request):
 
     return render(request, 'profile_delete.html', {})    
 
-# password 꺼내오는 것 
-    request.POST.get('password')
-=======
-        return Response(status = 200)
->>>>>>> 1c454b810b03251a813f35f5b1bee8aaba5b2de4

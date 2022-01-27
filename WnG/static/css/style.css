@@ -130,7 +130,7 @@ h1, h2, h3, h4, h5, h6, .font-primary {
 }
 
 nav{
-  float:right/**
+  float:right;}/**
   * Template Name: WeBuild - v4.6.0
   * Template URL: https://bootstrapmade.com/free-bootstrap-coming-soon-template-countdwon/
   * Author: BootstrapMade.com
@@ -600,7 +600,7 @@ nav{
   #footer .credits a {
     color: #72a8bf;
   }
-}
+
 
 .todayWeather{
   width: 80%;
