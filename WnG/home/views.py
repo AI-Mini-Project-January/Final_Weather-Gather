@@ -328,13 +328,6 @@ def grid(lat, lng):
 
 
 
-  ################################## kakaotalk service
-  ##################################
-  ##################################
-  
-
-# Create your views here.
-
 def home(request):
      #위도, 경도 함수 호출
     lat, lng = get_location(request)
@@ -442,9 +435,9 @@ def home(request):
 
     
     if 0<= int(time) // 100 <=9 :
-        fcstTime = '0' + str(int(time) // 100 * 100)
+        fcstTime = '0' + str(int(time) // 100 * 100 + 100)
     else :
-        fcstTime = str(int(time) // 100 * 100)
+        fcstTime = str(int(time) // 100 * 100  + 100)
 
     for item in r_item:
         if(item.get("fcstDate") == today_date and item.get("fcstTime") == fcstTime and item.get("category") == "TMP"):
@@ -592,7 +585,17 @@ def home(request):
     
     # return HttpResponse(res)
     # weather.html로 보내 출력하기
-    return render(request, 'templates/home.html', {'today': today_result, 'tomorrow':tomorrow_result})
+    return render(request, 'templates/weather.html', {'today': today_result, 'tomorrow':tomorrow_result})
+
+
+
+
+  ################################## kakaotalk service
+  ##################################
+  ##################################
+
+  
+# Create your views here.
 
 # def kakaologinhome(request):
 #     return render(request, 'templates/kakaologinhome.html')
