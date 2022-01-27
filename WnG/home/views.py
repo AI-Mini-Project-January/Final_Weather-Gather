@@ -318,7 +318,7 @@ def home(request):
     wsd = tomorrow['풍속']
     reh = tomorrow['습도']
 
-    # tomorrow_result에 현재 날씨 정보 
+    # tomorrow_result에 내일 출근 날씨 정보 
 
     tomorrow_result = []
     tomorrow_result.append(tmp)
