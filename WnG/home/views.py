@@ -440,11 +440,17 @@ def home(request):
     # 1900
     # 2000
 
+    
+    if 0<= int(time) // 100 <=9 :
+        fcstTime = '0' + str(int(time) // 100 * 100)
+    else :
+        fcstTime = str(int(time) // 100 * 100)
+
     for item in r_item:
-        if(item.get("fcstDate") == today_date and item.get("fcstTime") == '0' + str(int(time) // 100 * 100+100) and item.get("category") == "TMP"):
+        if(item.get("fcstDate") == today_date and item.get("fcstTime") == fcstTime and item.get("category") == "TMP"):
             today['기온'] = item["fcstValue"] 
 
-        if(item.get("fcstDate") == today_date and item.get("fcstTime") == '0' + str(int(time) // 100 * 100+100) and item.get("category") == "PTY"):
+        if(item.get("fcstDate") == today_date and item.get("fcstTime") == fcstTime and item.get("category") == "PTY"):
             rainfall_code = item.get("fcstValue") 
 
             if rainfall_code == '1':
@@ -464,16 +470,16 @@ def home(request):
 
             today['눈/비 소식'] = rainfall_state
 
-        if(item.get("fcstDate") == today_date and item.get("fcstTime") == '0' + str(int(time) // 100 * 100+100) and item.get("category") == "POP"):
+        if(item.get("fcstDate") == today_date and item.get("fcstTime") == fcstTime and item.get("category") == "POP"):
             today['강수확률'] = item["fcstValue"] + '%'
 
-        if(item.get("fcstDate") == today_date and item.get("fcstTime") == '0' + str(int(time) // 100 * 100+100) and item.get("category") == "REH"):
+        if(item.get("fcstDate") == today_date and item.get("fcstTime") == fcstTime and item.get("category") == "REH"):
             today['습도'] = item["fcstValue"] + '%'
 
-        if(item.get("fcstDate") == today_date and item.get("fcstTime") == '0' + str(int(time) // 100 * 100+100) and item.get("category") == "WSD"):
+        if(item.get("fcstDate") == today_date and item.get("fcstTime") == fcstTime and item.get("category") == "WSD"):
             today['풍속'] = item["fcstValue"] + 'm/s'
 
-        if(item.get("fcstDate") == today_date and item.get("fcstTime") == '0' + str(int(time) // 100 * 100+100) and item.get("category") == "SKY"):
+        if(item.get("fcstDate") == today_date and item.get("fcstTime") == fcstTime and item.get("category") == "SKY"):
             weather_code = item.get("fcstValue")
 
             if weather_code == '1':
