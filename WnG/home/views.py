@@ -385,7 +385,7 @@ def kakaoLogout(request):
     _result = _res.json()
     if _result.get('id'):
         del request.session['access_token']
-        return render(request, 'templates/kakaologoutSuccess.html')
+        return render(request, 'home/kakaologoutSuccess.html')
     else:
         return render(request, 'home/kakaologoutError.html')
 
