@@ -177,9 +177,20 @@ def home(request):
 
     
     if 0<= int(time) // 100 <=9 :
+
         fcstTime = '0' + str(int(time) // 100 * 100 + 100)
+
     else :
-        fcstTime = str(int(time) // 100 * 100  + 100)
+
+        if int(time) // 100 == 23:
+
+            fcstTime = "0000"
+
+            today_date = tomorrow_date
+
+        else:
+
+            fcstTime = str(int(time) // 100 * 100  + 100)
 
     for item in r_item:
         if(item.get("fcstDate") == today_date and item.get("fcstTime") == fcstTime and item.get("category") == "TMP"):
@@ -206,7 +217,7 @@ def home(request):
             today['눈/비 소식'] = rainfall_state
 
         if(item.get("fcstDate") == today_date and item.get("fcstTime") == fcstTime and item.get("category") == "POP"):
-            today['강수확률'] = item["fcstValue"] + '%'
+            today['강수확률'] = item["fcstValue"]
 
         if(item.get("fcstDate") == today_date and item.get("fcstTime") == fcstTime and item.get("category") == "REH"):
             today['습도'] = item["fcstValue"] + '%'
@@ -232,7 +243,7 @@ def home(request):
     tmp = int(today['기온'])
     sky = today['날씨']
     pty = today['눈/비 소식']
-    pop = today['강수확률']
+    pop = int(today['강수확률'])
     wsd = today['풍속']
     reh = today['습도']
 
@@ -282,7 +293,7 @@ def home(request):
             tomorrow['눈/비 소식'] = rainfall_state
 
         if(item.get("fcstTime") == "0700" and item.get("fcstDate") == tomorrow_date and item.get("category") == "POP"):
-            tomorrow['강수확률'] = item["fcstValue"] + '%'
+            tomorrow['강수확률'] = item["fcstValue"]
 
         if(item.get("fcstTime") == "0700" and item.get("fcstDate") == tomorrow_date and item.get("category") == "REH"):
             tomorrow['습도'] = item["fcstValue"] + '%'
@@ -307,7 +318,7 @@ def home(request):
     tmp = int(tomorrow['기온'])
     sky = tomorrow['날씨']
     pty = tomorrow['눈/비 소식']
-    pop = tomorrow['강수확률']
+    pop = int(tomorrow['강수확률'])
     wsd = tomorrow['풍속']
     reh = tomorrow['습도']
 
@@ -385,7 +396,7 @@ def kakaoLogout(request):
     _result = _res.json()
     if _result.get('id'):
         del request.session['access_token']
-        return render(request, 'templates/kakaologoutSuccess.html')
+        return render(request, 'home/kakaologoutSuccess.html')
     else:
         return render(request, 'home/kakaologoutError.html')
 
