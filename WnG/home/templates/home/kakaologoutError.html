@@ -1,56 +1,42 @@
-<!DOCTYPE html>
+<script>
+  function getCookie(name) {
+      var cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+          var cookies = document.cookie.split(';');
+          for (var i = 0; i < cookies.length; i++) {
+              var cookie = cookies[i].trim();
+                  if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                      cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                      break;
+                  }
+          }
+      }
+      return cookieValue;
+  }
+</script>
+
 {% load static %}
-<html lang="en">
 
+<!DOCTYPE html>
+<link rel = "stylesheet" href = "{% static 'css/style.css' %}">
+<html>
+  
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <link rel = "stylesheet" href = "{% static 'css/style.css' %}">
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
-  <link href="{%static 'img/favicon.png'%}" rel="icon">
-  <link href="{% static 'img/apple-touch-icon.png'%}" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
-  <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <!-- <link href="css/style.css" rel="stylesheet"> -->
-
-  <!-- =======================================================
-  * Template Name: WeBuild - v4.6.0
-  * Template URL: https://bootstrapmade.com/free-bootstrap-coming-soon-template-countdwon/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  <title> Weather & Gather </title>
 </head>
+<section id = "window">
+  <header>
+      <h1> Weather & Gather</h1>
+      <div><hr></div>
+  </header>
 
-<body>
-
-  <!-- ======= Header ======= -->
-  <header id="header">
-    <div class="container-fluid d-flex justify-content-between align-items-center"></div>
-  </header><!-- End #header -->
-
-  <!-- ======= Hero Section ======= -->
-  <section id="hero">
+  <body>
     <div class="hero-container">
       <h1 class="text-light"><span>weather & Gather</span></h1>
       <h1 class="text-light"><span>로그아웃 실패하였습니다.</span></h1>
-      <a href = "/home/index" class = "text-light"><span>Home으로 돌아가기</span></a>
+      <box><a href = "/home/index">Home으로 돌아가기></a></box>
     </div>
-
-  <!-- Vendor JS Files -->
-  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-
-  <!-- Template Main JS File -->
-  <script src="{% static 'js/main.js' %}"></script>
-</body>
+      
+  </body>
+</section>
 </html>
