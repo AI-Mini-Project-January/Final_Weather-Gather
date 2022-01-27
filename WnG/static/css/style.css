@@ -207,7 +207,7 @@ nav{
   --------------------------------------------------------------*/
   #window {
     width: 100%;
-    height: 1500px;
+    height: 2000px;
     background: url("../img/hero-bg.jpg") top center;
     background-size: cover;
     position: relative;
@@ -266,40 +266,126 @@ nav{
   }
   
   .todayWeather{
-    width: 100%;
+    width: 1000px;
     height: 600px;
     position: absolute;
-    top: 100px;
-    left: 100px;
-    
+    top: 50px;
+    left: 125px;
+    flex: 1;
   }
-  .clothes {
+  .todayWeather > div{
     width: 100%;
-    height: 310px;
+    height: 100%;
     position: absolute;
-    left: 10px;
-    top : 920px;
-    
+    top: 50px;
+    left: 125px;
+    flex: 1;
   }
-  
+
   .blur {
     backdrop-filter: blur(10px);
     border-radius: 10px;
     border: 1px solid rgba(255,255,255,0.2);
-    width: 100%;
+    width: 1000px;
     height: 600px;
-    top: 100px;
-    left: 100px;
+    top: 50px;
+    left: 125px;
+
+  }
+
+  .clothes {
+    width: 1000px;
+    height: 350px;
+    position: absolute;
+    left: 125px;
+    top : 120px;
+    flex: 1;
+  }
+
+  .clothes > div {
+    width: 100%;
+    height: 310px;
+    position: absolute;
+    left: 125px;
+    top : 120px;
+    flex: 1;
   
   }
-  
+
   .blur2 {
     backdrop-filter: blur(10px);
     border-radius: 10px;
     border: 1px solid rgba(255,255,255,0.2);
-    width: 100%;
-    height: 300px;
+    width: 1000px;
+    height: 350px;
+    top: 120px;
   }
+  
+  .tomorrowWeather {
+    width: 1200px;
+    height: 350px;
+    position: absolute;
+    left: 70px;
+    top : 600px;
+    flex: 1;
+  }
+
+  .tomorrowWeather > div {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 70px;
+    top : 600px;
+    flex: 1;
+  
+  }
+
+  .blur3 {
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.2);
+    width: 1200px;
+    height: 350px;
+    top: 600px;
+    left : 70px;
+    }
+
+  .kakao {
+    width: 1200px;
+    height: 250px;
+    position: absolute;
+    left: 70px;
+    top : 800px;
+    flex: 1;
+  }
+
+  .kakao > div {
+    width: 100%;
+    height: 250px;
+    position: absolute;
+    left: 70px;
+    top : 800px;
+    flex: 1;
+  
+  }
+  
+  .blur4 {
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.2);
+    width: 1200px;
+    height: 250px;
+    top: 800px;
+    left: 70px;
+    }
+  
+
+
+
+
+
+
+
   
   .wstate {
     font-size: 45px;

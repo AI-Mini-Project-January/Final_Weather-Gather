@@ -29,11 +29,10 @@
 </head>
 
 <style>
-.main_body {
+.feed_list {
     display: flex;
     justify-content: center;
     padding-top: 50px;
-    background-color: #FAFAFA;
 }
 
 .left_body {
@@ -242,13 +241,12 @@
     <div style="text-align: left">
         <div style="display: flex; flex-direction: row; margin: 20px 0">
             <div style="font-size: 26px; margin-right: 40px">
-                ID: {{user.identi}}
+                {{user.identi}}
             </div>
             <button id = "button_profile_upload" style="margin-right: 40px">프로필 사진 편집</button>
             
             <!-- 이미지를 올렸을 때가 onChange가 실행될 때임 -->
             <input type="file" id="input_fileupload" onChange="profile_upload();" style="display: none"/> 
-            <span class = "material-icons-outlined" style="margin-right: 40px">settings</span>
         </div>
         <div>
             <b>닉네임: {{user.nickname}}</b>
@@ -264,8 +262,9 @@
     </div>
 </div>
 
-<div id = "feed_list" style = "width: 100%; min-width: 1000px; display: flex; align-items: center; justify-content: center">
-    <div style="display: flex; flex-direction: row; flex-wrap: wrap; width: 1000px; justify-content: center">
+{% comment %} <div class="feed_list"> {% endcomment %}
+<div id = "feed_list" style = "background-image: url('../media/hero.jpg'); width: 100%; min-width: 1000px; display: flex; align-items: center; justify-content: center">
+    <div style=" display: flex; flex-direction: row; flex-wrap: wrap; width: 1000px; justify-content: center">
         {% for feed in feed_list %}
             <div style = "width: 300px; height: 300px; margin: 10px 5px 0px 5px">
 
@@ -274,10 +273,10 @@
             </div>
             </div>
             {% endfor %}
-    </div>
+    </div>   
 </div>
 
-<div id = "like_feed_list" style = "width: 100%; min-width: 1000px; display: none; align-items: center; justify-content: center">
+<div id = "like_feed_list" style = "background-image: url('../media/hero.jpg'); width: 100%; min-width: 1000px; display: none; align-items: center; justify-content: center">
     <div style="display: flex; flex-direction: row; flex-wrap: wrap; width: 1000px; justify-content: center">
         {% for feed in like_feed_list %}
             <div style = "width: 300px; height: 300px; margin: 10px 5px 0px 5px">
@@ -290,8 +289,8 @@
     </div>
 </div>
 
-<div id = "bookmark_feed_list" style = "width: 100%; min-width: 1000px; display: none; align-items: center; justify-content: center">
-    <div style="display: flex; flex-direction: row; flex-wrap: wrap; width: 1000px; justify-content: center">
+<div id = "bookmark_feed_list" style = "background-image: url('../media/hero.jpg'); width: 100%; min-width: 1000px; display: none; align-items: center; justify-content: center">
+    <div style=" display: flex; flex-direction: row; flex-wrap: wrap; width: 1000px; justify-content: center">
         {% for feed in bookmark_feed_list %}
             <div style = "width: 300px; height: 300px; margin: 10px 5px 0px 5px">
 
