@@ -122,7 +122,6 @@
             
             
                 <td> 
-                    {% comment %} 날씨 정보보다 날짜 정보 불러와서 명절에 한복 추천 {% endcomment %}
                     {% if today.6 >= "20220131" and today.6 <= "20220202" %}
                         <img src = '{% static "img/hanbok.png" %}' style = "width: 150; height: auto;">
                         <img src = '{% static "img/hanbok (2).png" %}' style = "width: 150; height: auto;">
@@ -200,7 +199,7 @@
         <div class = "tomorrowWeather" align = "center">
             <div class = "blur3"  align = "center">
                 <h2 align = "center">내일 출근 날씨</h2>
-                <div>
+                <div class = "imageWeather">
                     <tbody>
                         <tr>
                             <td>
@@ -242,11 +241,15 @@
                             
                         </tr>
                     </tbody>
-                    <!-- 내일 기온  -->
+            
                     <span>
+                        <!-- 기온 3℃ -->
                         내일 기온 {{ tomorrow.0 }}℃
                     </span>
-
+                
+                    
+                    
+                    
                     <span id = weather_box>
                         
                         <span>바람 {{ tomorrow.4 }}</span>
