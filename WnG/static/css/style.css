@@ -75,11 +75,15 @@ h1, h2, h3, h4, h5, h6, .font-primary {
 --------------------------------------------------------------*/
 #window {
   width: 100%;
+<<<<<<< HEAD
   height: 1500px;
+=======
+  height: 130vh;
+>>>>>>> 9905786cf06ffca3828512762bb67c8a0f3e3f00
   background: url("../img/hero-bg.jpg") top center;
   background-size: cover;
   position: relative;
-  margin-top: -80px;
+  margin-top: -50px;
   z-index: 9;
   /* countdown */
 }
