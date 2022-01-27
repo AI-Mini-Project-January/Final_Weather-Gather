@@ -88,7 +88,6 @@ class UploadProfile(APIView):
         user.profile_image = profile_image
         user.save()
 
-<<<<<<< HEAD
         return Response(status = 200)
 
 
@@ -402,6 +401,4 @@ def profile_delete_view(request):
 
 # password 꺼내오는 것 
     request.POST.get('password')
-=======
-        return Response(status = 200)
->>>>>>> 1c454b810b03251a813f35f5b1bee8aaba5b2de4
+
