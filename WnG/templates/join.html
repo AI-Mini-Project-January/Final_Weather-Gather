@@ -80,10 +80,11 @@ $('#join_button').click(function(){
         success: function(data){
             console.log("성공");
             alert("회원가입 성공했습니다. 로그인 해주세요.");
-            location.replace('/user/login');
+            location.replace('user/login');
         },
         error: function(request, status, error){
             console.log("에러");
+            alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
         }, 
         complete: function(){
             console.log("완료");

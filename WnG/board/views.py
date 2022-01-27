@@ -3,12 +3,12 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from uuid import uuid4
-from login.models import User
+from user.models import User
 from .models import Feed, Like, Bookmark
 import os
 from django.shortcuts import redirect
 #from .forms import ProfileForm
-from login.models import User
+from user.models import User
 
 # config.settings에서 MEDIA_ROOT 가져올꺼임
 from config.settings import MEDIA_ROOT 
@@ -115,3 +115,4 @@ from django.shortcuts import render
 
 def update(request):
     return render(request, 'content/update.html')
+

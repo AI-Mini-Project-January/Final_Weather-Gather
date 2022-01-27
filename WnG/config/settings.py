@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'board',
     'home',
-    'login',
+    'user',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -137,4 +137,4 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend' , 
 ]
 
-AUTH_USER_MODEL = 'login.User'
+AUTH_USER_MODEL = 'user.User'
