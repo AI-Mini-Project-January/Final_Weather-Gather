@@ -244,7 +244,7 @@
     <div style="text-align: left">
         <div style="display: flex; flex-direction: row; margin: 20px 0">
             <div style="font-size: 26px; margin-right: 40px">
-                ID: {{user.identi}}
+                {{user.identi}}
             </div>
             <button id = "button_profile_upload" style="margin-right: 40px">프로필 사진 편집</button>
             
@@ -385,7 +385,7 @@ $('#feed_create_button').click(function(){
 /* success, error, complete -> 콜백함수: 뭔가 액션이 일어나서 그 결과로 실행되는 함수 즉, 실행하지 않아도 트리거때문에 발동됨*/
 /* 만약 이 Ajax가 성공하면 자동적으로 success 함수가 실행됨  */
     $.ajax({
-        url:"/content/upload",
+        url:"/board/upload",
         data: fd,
         method: "POST",
         processData: false,

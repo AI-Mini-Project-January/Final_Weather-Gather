@@ -1,3 +1,5 @@
+from pickle import NONE
+from tkinter import Image
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, UserManager, PermissionsMixin
 
@@ -25,17 +27,32 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, UserMa
 #     class Meta:
 #         db_table = "User"
 
+
+
 class UserManager(BaseUserManager):
-    def create_user(self, nickname, password, profile_image, age, **extra_fields):
+    def create_user(self, nickname, profile_image, age, password, **kwargs):
         user = self.model(
             nickname=nickname,
-            age=age,
             profile_image=profile_image,
-            **extra_fields
+            age=age,
+            password=password,
+            **kwargs
             )
+
         user.set_password(password)
         user.save(using=self._db)
         return user
+
+    def create_superuser(self, nickname, password, profile_imag=NONE, age=NONE, **kwargs):
+        user = self.model(
+            nickname=nickname,
+            age=age,
+            is_staff=True, 
+            is_superuser=True,
+            **kwargs
+            )
+        user.save(using=self._db)
+        return user    
 
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -43,9 +60,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     nickname = models.CharField(max_length=24,verbose_name='닉네임',null=False,unique=True)
     identi= models.CharField(max_length=24,verbose_name='아이디', unique=True)
     age = models.IntegerField(verbose_name='나이', null=True )
-    profile_image = models.TextField()
+    # profile_image = models.TextField()
+    profile_image = models.ImageField(upload_to="board/images", blank=True)
     USERNAME_FIELD = 'nickname'
-    # REQUIRED_FIELDS = ['identi']
+    # REQUIRED_FIELDS = ['age']
         
 
     def __str__(self):

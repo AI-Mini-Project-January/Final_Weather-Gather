@@ -399,3 +399,17 @@ def kakaoMessage_password(request):
     _res = requests.post(url_message, headers=_header, data=data)
     _result = _res.json()
     return render(request, 'user/kakaopasswordSuccess.html')
+
+from django.contrib import messages
+from django.contrib.auth import logout
+
+def profile_delete_view(request):
+    if request.method == 'POST':
+        logout(request)
+        messages.success(request, "회원탈퇴 완료.")
+        return redirect('/user/login')
+
+    return render(request, 'profile_delete.html', {})    
+
+# password 꺼내오는 것 
+    request.POST.get('password')

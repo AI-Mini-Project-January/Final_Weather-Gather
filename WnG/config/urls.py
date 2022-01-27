@@ -19,6 +19,9 @@ from home import views
 #from board import views
 from user import views
 #from myPage import views
+from django.conf.urls.static import static
+from django.conf import settings
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,3 +30,5 @@ urlpatterns = [
     path('user/', include('user.urls')),
     #path('myPage/', include('myPage.urls')),
 ]
+urlpatterns += \
+    static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
