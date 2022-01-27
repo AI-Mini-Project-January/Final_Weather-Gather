@@ -72,9 +72,11 @@
                         </tr>
                     </tbody>
                     <span>
-                        <box> 현재 기온은 {{ today.0 }}℃</box>
+                        <!-- 기온 3℃ -->
+                        현재 기온 {{ today.0 }}℃
                     </span>
-                </div>
+                
+                    
                     
     
                     <div>{% if today.2 != '없음' %}
@@ -94,6 +96,9 @@
                         </span>
                     </span>
                 </td>
+                    
+                </div>
+
             </div>
         </div>
 
