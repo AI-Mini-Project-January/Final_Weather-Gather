@@ -399,3 +399,9 @@ def profile_delete_view(request):
 
     return render(request, 'profile_delete.html', {})    
 
+<<<<<<< HEAD
+=======
+# password 꺼내오는 것 
+    request.POST.get('password')
+
+>>>>>>> e38e1c0fef9a6a69c3f500835f681bc3f09ecf03

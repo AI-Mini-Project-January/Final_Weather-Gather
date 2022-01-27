@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 from pickle import NONE
 from tkinter import Image
 from django.contrib.auth.base_user import AbstractBaseUser
+=======
+
+from pickle import NONE
+from tkinter import Image
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, UserManager, PermissionsMixin
+>>>>>>> e38e1c0fef9a6a69c3f500835f681bc3f09ecf03
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, UserManager, PermissionsMixin
 
@@ -15,6 +22,7 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, UserMa
 # 나이 -> 
 # 프로필 사진 저장
 
+<<<<<<< HEAD
     
 #     profile_image = models.TextField()
 #     nickname = models.CharField(max_length=24, unique=True)
@@ -31,6 +39,8 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, UserMa
 
 
 
+=======
+>>>>>>> e38e1c0fef9a6a69c3f500835f681bc3f09ecf03
 class UserManager(BaseUserManager):
     def create_user(self, nickname, profile_image, age, password, **kwargs):
         user = self.model(
@@ -71,10 +81,15 @@ class User(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return self.user_id
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> e38e1c0fef9a6a69c3f500835f681bc3f09ecf03
     profile_image = models.TextField()
     nickname = models.CharField(max_length=24, unique=True)
     identi= models.CharField(max_length=24, unique=True)
     age = models.IntegerField()
+
 # 실제로 유저를 선택하면 그 유저의 이름을 어떤필드를 쓸거냐
     USERNAME_FIELD = 'nickname'
     
