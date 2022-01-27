@@ -31,9 +31,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'board',
-    'home',
+    'content',
+    'config',
     'user',
+    'home',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -57,7 +58,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [ BASE_DIR, 'templates' ], #프로젝트 공통 Template 사용 시
+        'DIRS': [], 
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -137,4 +138,11 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend' , 
 ]
 
+# 로그인 URL
+LOGIN_URL = '/user/login/'
+# 로그인 후 URL          
+LOGIN_REDIRECT_URL = '/user/main/'  
+# 로그아웃 후 URL
+LOGOUT_REDIRECT_URL = '/user/login/'   
+        
 AUTH_USER_MODEL = 'user.User'

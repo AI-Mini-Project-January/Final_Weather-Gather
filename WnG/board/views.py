@@ -80,7 +80,7 @@ class UploadFeed(APIView):
         with open(save_path, 'wb+') as destination: 
             for chunk in file.chunks():
                 destination.write(chunk) 
-                #여기까지 수행되면 파일이 media에 저장됨 
+                #여기까지 수행되면 파일이 media에 저장됨
         #파일이 media에 저장됐으면 이제 해야할껀 저장된 경로를 image에 저장해야함 그래서 클라이언트가 올린 파일이미지 이름이 필요없어짐
         
         image = uuid_name
@@ -107,12 +107,12 @@ class Profile(APIView):
         if user is None:
             return render(request, "user/login.html")
         
-        return render(request, 'content/profile.html', context=dict(user=user))
+        return render(request, 'board/profile.html', context=dict(user=user))
 
 
 # 톱니바퀴 버튼 누르면 나오는 페이지(수정 기능은 아직,,)
 from django.shortcuts import render
 
 def update(request):
-    return render(request, 'content/update.html')
+    return render(request, 'board/update.html')
 
