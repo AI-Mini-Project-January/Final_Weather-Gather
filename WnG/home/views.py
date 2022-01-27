@@ -1,4 +1,3 @@
-from django.http import HttpResponse
 from django.shortcuts import render
 import requests
 import json
@@ -6,6 +5,11 @@ from datetime import date, datetime, timedelta, time
 import urllib
 import urllib.request
 import math
+
+from django.shortcuts import redirect
+from django.template import loader
+from django.http import HttpResponse, JsonResponse
+import requests
 
 # google api geolocate를 활용하여 ip 주소를 기반으로 현재 위치의 위도, 경도 정보 추출
 def get_location(request):
@@ -66,9 +70,273 @@ def grid(lat, lng):
     return x, y
 
 
-def get_weather(request):
+# def get_weather(request):
 
-    #위도, 경도 함수 호출
+    # #위도, 경도 함수 호출
+    # lat, lng = get_location(request)
+    # # print(lat, lng)
+
+    # # x좌표, y좌표 함수 호출
+    # x, y = grid(lat, lng)
+    # # print(x,y)
+
+    # # 기상청 단기예보 api
+    # url = "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst"
+
+    # today = datetime.now()
+
+    # base_date = today.strftime("%Y%m%d")
+    # today_date = today.strftime("%Y%m%d")
+    # tomorrow = date.today() + timedelta(days=1)
+    # tomorrow_date = tomorrow.strftime("%Y%m%d")
+    # yesterday = date.today() - timedelta(days=1)
+    # yesterday_date = yesterday.strftime("%Y%m%d")
+    
+    
+    # time = today.strftime('%H%M')
+    
+    
+    
+    # # 날씨 정보 발표 날짜와 시각(base_date, base_time) 
+    # # 하드코딩 대신 자동으로 시간 받아서 설정해주기
+
+    # hour = today.hour
+    # minute = today.minute
+    # # print(time)
+    # if hour < 2 or (hour == 2 and minute <= 10): # 00:00 1:59
+    #     base_date = yesterday_date
+    #     base_time = "2300"
+    # elif hour < 5 or (hour == 5 and minute <= 10):
+    #     base_date = today_date
+    #     base_time = "0200"
+    # elif hour < 8 or (hour == 8 and minute <= 10): # 5시 11분~8시 10분 사이
+    #     base_date = today_date
+    #     base_time = "0500"
+    # elif hour<11 or (hour == 11 and minute <=10): # 8시 11분~11시 10분 사이
+    #     base_date = today_date
+    #     base_time = "0800"
+    # elif hour < 14 or (hour == 14 and minute <= 10): # 11시 11분~14시 10분 사이
+    #     base_date = today_date
+    #     base_time = "1100"
+    # elif hour < 17 or (hour == 17 and minute <= 10): # 14시 11분~17시 10분 사이
+    #     base_date = today_date
+    #     base_time = "1400"
+    # elif hour < 20 or (hour == 20 and minute <= 10): # 17시 11분~20시 10분 사이
+    #     base_date = today_date
+    #     base_time ="1700" 
+    # elif hour < 23 or (hour == 23 and minute <= 10): # 20시 11분~23시 10분 사이
+    #     base_date = today_date
+    #     base_time ="2000"
+    # else: # 23시 11분~23시 59분
+    #     base_date = today_date
+    #     base_time = "2300"
+
+
+
+    # # 지금 현재 날씨 정보 제공 내일 출근 날씨 제공 json 정보 불러오기
+
+    # params ={'serviceKey' : 'Rty09EbsqEEgCQyDM03L//hEwSnSIENiavOyVF3BsZwUSxzkFNKrJFgbXTSayi81l4WbTijUpuHbow5W/FwB4w==', 
+    #     'pageNo' : '1', 'numOfRows' : '1000', 'dataType' : 'JSON',
+    #     'base_date' : base_date, 'base_time' : base_time, 'nx' : x, 'ny' : y}
+
+
+    # res = requests.get(url, params=params)
+
+    # #json 값에서 item 뽑기
+
+    # r_dict = json.loads(res.text)
+    # r_response = r_dict.get("response")
+    # r_body = r_response.get("body")
+    # r_items = r_body.get("items")
+    # r_item = r_items.get("item")
+
+    # # item에 있는 여러 값들 중에 필요한 날씨 데이터 뽑아내기
+
+    # # 현재 시간의 날씨 정보 data에 저장
+    # today = {}
+    
+
+    # # today에 현재 시간의 날씨 정보 담기(현재 시간을 계산해서 
+    # # 예보 시각(fcstTime)에 맞는 날씨 정보 담기)
+    # # base_date = yesterday_date
+    # # base_time = "2300"
+    
+    # # 0000
+    # # 0100
+    # # 0200
+    # # 0300
+    # # ....
+    # # 2358
+    # # 0008
+    # # 1754
+    # # 1700+100
+    # # 1700
+
+    # # 1800
+    # # 1900
+    # # 2000
+
+    # for item in r_item:
+    #     if(item.get("fcstDate") == today_date and item.get("fcstTime") == '0' + str(int(time) // 100 * 100+100) and item.get("category") == "TMP"):
+    #         today['기온'] = item["fcstValue"] 
+
+    #     if(item.get("fcstDate") == today_date and item.get("fcstTime") == '0' + str(int(time) // 100 * 100+100) and item.get("category") == "PTY"):
+    #         rainfall_code = item.get("fcstValue") 
+
+    #         if rainfall_code == '1':
+    #             rainfall_state = '비'
+
+    #         elif rainfall_code == '2':
+    #             rainfall_state = '비/눈'
+
+    #         elif rainfall_code == '3':
+    #             rainfall_state = '눈'
+
+    #         elif rainfall_code == '4':
+    #             rainfall_state = '소나기'
+
+    #         else:
+    #             rainfall_state = '없음'
+
+    #         today['눈/비 소식'] = rainfall_state
+
+    #     if(item.get("fcstDate") == today_date and item.get("fcstTime") == '0' + str(int(time) // 100 * 100+100) and item.get("category") == "POP"):
+    #         today['강수확률'] = item["fcstValue"] + '%'
+
+    #     if(item.get("fcstDate") == today_date and item.get("fcstTime") == '0' + str(int(time) // 100 * 100+100) and item.get("category") == "REH"):
+    #         today['습도'] = item["fcstValue"] + '%'
+
+    #     if(item.get("fcstDate") == today_date and item.get("fcstTime") == '0' + str(int(time) // 100 * 100+100) and item.get("category") == "WSD"):
+    #         today['풍속'] = item["fcstValue"] + 'm/s'
+
+    #     if(item.get("fcstDate") == today_date and item.get("fcstTime") == '0' + str(int(time) // 100 * 100+100) and item.get("category") == "SKY"):
+    #         weather_code = item.get("fcstValue")
+
+    #         if weather_code == '1':
+    #             weather_state = '맑음'
+
+    #         elif weather_code == '3':
+    #             weather_state = '구름많음'
+
+    #         else:
+    #             weather_state = '흐림'
+
+    #         today['날씨'] = weather_state
+
+
+    # tmp = int(today['기온'])
+    # sky = today['날씨']
+    # pty = today['눈/비 소식']
+    # pop = today['강수확률']
+    # wsd = today['풍속']
+    # reh = today['습도']
+
+    # # today_result에 현재 날씨 정보 
+
+    # today_result = []
+    # today_result.append(tmp)
+    # today_result.append(sky)
+    # today_result.append(pty)
+    # today_result.append(pop)
+    # today_result.append(wsd)
+    # today_result.append(reh)
+    # today_result.append(today_date)
+
+    
+
+
+    # # 다음날 출근 시간(0700)을 기준으로 날씨 정보 받아오기
+    # tomorrow = {}
+
+    # for item in r_item:
+    #     if(item.get("fcstTime") == "0700" and item.get("fcstDate") == tomorrow_date and item.get("category") == "TMP"):
+    #         tomorrow['기온'] = item["fcstValue"]
+
+    #     if(item.get("fcstTime") == "0700" and item.get("fcstDate") == tomorrow_date and item.get("category") == "PTY"):
+    #         rainfall_code = item.get("fcstValue") 
+
+    #         if rainfall_code == '1':
+    #             rainfall_state = '비'
+
+    #         elif rainfall_code == '2':
+    #             rainfall_state = '비/눈'
+
+    #         elif rainfall_code == '3':
+    #             rainfall_state = '눈'
+
+    #         elif rainfall_code == '4':
+    #             rainfall_state = '소나기'
+
+    #         else:
+    #             rainfall_state = '없음'
+
+    #         tomorrow['눈/비 소식'] = rainfall_state
+
+    #     if(item.get("fcstTime") == "0700" and item.get("fcstDate") == tomorrow_date and item.get("category") == "POP"):
+    #         tomorrow['강수확률'] = item["fcstValue"] + '%'
+
+    #     if(item.get("fcstTime") == "0700" and item.get("fcstDate") == tomorrow_date and item.get("category") == "REH"):
+    #         tomorrow['습도'] = item["fcstValue"] + '%'
+
+    #     if(item.get("fcstTime") == "0700" and item.get("fcstDate") == tomorrow_date and item.get("category") == "WSD"):
+    #         tomorrow['풍속'] = item["fcstValue"] + 'm/s'
+
+    #     if(item.get("fcstTime") == "0700" and item.get("fcstDate") == tomorrow_date and item.get("category") == "SKY"):
+    #         weather_code = item.get("fcstValue")
+
+    #         if weather_code == '1':
+    #             weather_state = '맑음'
+
+    #         elif weather_code == '3':
+    #             weather_state = '구름많음'
+
+    #         else:
+    #             weather_state = '흐림'
+
+    #         tomorrow['날씨'] = weather_state
+
+    # tmp = int(tomorrow['기온'])
+    # sky = tomorrow['날씨']
+    # pty = tomorrow['눈/비 소식']
+    # pop = tomorrow['강수확률']
+    # wsd = tomorrow['풍속']
+    # reh = tomorrow['습도']
+
+    # # tomorrow_result에 현재 날씨 정보 
+
+    # tomorrow_result = []
+    # tomorrow_result.append(tmp)
+    # tomorrow_result.append(sky)
+    # tomorrow_result.append(pty)
+    # tomorrow_result.append(pop)
+    # tomorrow_result.append(wsd)
+    # tomorrow_result.append(reh)
+    # tomorrow_result.append(tomorrow_date)
+
+
+    # # print(base_date)
+    # # print(base_time)
+    # # print(res)
+    
+    # # print(today)
+    # # print(tomorrow)
+
+    
+    # # return HttpResponse(res)
+    # # weather.html로 보내 출력하기
+    # return render(request, 'templates/home.html', {'today': today_result, 'tomorrow':tomorrow_result})
+
+
+
+  ################################## kakaotalk service
+  ##################################
+  ##################################
+  
+
+# Create your views here.
+
+def home(request):
+     #위도, 경도 함수 호출
     lat, lng = get_location(request)
     # print(lat, lng)
 
@@ -239,8 +507,6 @@ def get_weather(request):
     today_result.append(today_date)
 
     
-
-
     # 다음날 출근 시간(0700)을 기준으로 날씨 정보 받아오기
     tomorrow = {}
 
@@ -321,23 +587,6 @@ def get_weather(request):
     # return HttpResponse(res)
     # weather.html로 보내 출력하기
     return render(request, 'templates/home.html', {'today': today_result, 'tomorrow':tomorrow_result})
-
-
-
-  ################################## kakaotalk service
-  ##################################
-  ##################################
-  
-from django.shortcuts import render, redirect
-from django.template import loader
-from django.http import HttpResponse, JsonResponse
-import requests
-import json
-
-# Create your views here.
-
-def home(request):
-    return render(request, 'templates/home.html')
 
 # def kakaologinhome(request):
 #     return render(request, 'templates/kakaologinhome.html')
