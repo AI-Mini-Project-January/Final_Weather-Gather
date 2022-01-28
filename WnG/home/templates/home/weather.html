@@ -29,14 +29,6 @@
         <div class = "title">
             <h1> Weather & Gather </h1>
         </div>
-        <div align = "right">
-
-            {% if request.session.identi %}
-                <box>{{ request.session.identi }} 님 반갑습니다.</box>
-            {% else %}
-                <box><a href="http://127.0.0.1:8000/user/login">Login</a></box>
-            {% endif %}
-        </div>
         <div><hr></div>
         <nav>
             <div class = "menu">
@@ -50,7 +42,7 @@
 
     <body>
         <h1 class = "text-light" ><span>오늘의 날씨를 확인하고 옷차림 미리 준비하세요</span></h1>
-
+        
         <div class = "todayWeather" align = "center">
             <div class = "blur" align = "center">
 
@@ -253,7 +245,7 @@
             
                     <span>
                         <!-- 기온 3℃ -->
-                        내일 기온 {{ tomorrow.0 }}℃
+                        현재 기온 {{ tomorrow.0 }}℃
                     </span>
                 
                     

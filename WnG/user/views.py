@@ -53,7 +53,7 @@ class Login(APIView):
             # session['identi'] 찾으면 내가 저장한 아이디가 나온다
             # 아이디를 세션정보에 넣게 되면 아이디를 가지고 user=User.objects.filter() 해서 
             # user의 닉네임이나 나이 등을 가져올 수 있게 됨   
-            request.session['identi'] = user.identi
+            request.session['identi'] = identi
             return Response(status=200)
         else:
             return Response(status=400, data=dict(message="회원정보가 잘못되었습니다."))

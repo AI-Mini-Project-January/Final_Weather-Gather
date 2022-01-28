@@ -1,6 +1,5 @@
 from os import TMP_MAX
 from django.shortcuts import render
-from numpy import identity
 import requests
 import json
 from datetime import date, datetime, timedelta, time
@@ -15,9 +14,6 @@ import requests
 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import get_user_model
-
-from user.models import User
-
 # from django.contrib.auth.models import User
 
 # google api geolocate를 활용하여 ip 주소를 기반으로 현재 위치의 위도, 경도 정보 추출
@@ -441,7 +437,7 @@ def kakaoMessage_climate(request):
     data={
         "template_object": json.dumps({
             "object_type": "text",
-            "text": "오늘의 Weather & Gather\n" + "기온 : " + (str)(temperature) + "'C\n강수확률 : " + (str)(rain) + "%\n오늘은 " + cloth + " 추천드립니다.",
+            "text": "오늘의 Weather & Gather\n" + "기온 : " + (str)(temperature) + "'C\n강수확률 : " + (str)(rain) + "\n오늘은 " + cloth + " 추천드립니다.",
             "link":{
                 "web_url":"http://127.0.0.1:8000/home/index"
             }
