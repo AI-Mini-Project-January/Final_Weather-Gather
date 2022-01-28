@@ -184,7 +184,7 @@ def home(request):
     # 2000
 
    
-    if 0<= int(time) // 100 <=8 :
+    if 0<= int(time) // 100 <=9 :
         fcstTime = '0' + str(int(time) // 100 * 100 + 100)
 
     else :
