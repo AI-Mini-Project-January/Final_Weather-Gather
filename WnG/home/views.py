@@ -441,7 +441,7 @@ def kakaoMessage_climate(request):
     data={
         "template_object": json.dumps({
             "object_type": "text",
-            "text": "오늘의 Weather & Gather\n" + "기온 : " + (str)(temperature) + "'C\n강수확률 : " + (str)(rain) + "\n오늘은 " + cloth + " 추천드립니다.",
+            "text": "오늘의 Weather & Gather\n" + "기온 : " + (str)(temperature) + "'C\n강수확률 : " + (str)(rain) + "%\n오늘은 " + cloth + " 추천드립니다.",
             "link":{
                 "web_url":"http://127.0.0.1:8000/home/index"
             }
