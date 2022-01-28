@@ -11,6 +11,9 @@
 
 <!-- Jquery -->
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js">
+    
+</script>>
 
 
 <title>회원 가입</title>
@@ -84,6 +87,7 @@ $('#join_button').click(function(){
         },
         error: function(request, status, error){
             console.log("에러");
+            alert("가입안된다고");
         }, 
         complete: function(){
             console.log("완료");
