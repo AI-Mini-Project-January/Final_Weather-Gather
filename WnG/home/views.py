@@ -12,6 +12,10 @@ from django.template import loader
 from django.http import HttpResponse, JsonResponse
 import requests
 
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth import get_user_model
+# from django.contrib.auth.models import User
+
 # google api geolocate를 활용하여 ip 주소를 기반으로 현재 위치의 위도, 경도 정보 추출
 def get_location(request):
     url = f'https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyBf9kIq9ciMUvzAr5neaJRMrlbx7rMZJx0'
@@ -175,9 +179,8 @@ def home(request):
     # 1900
     # 2000
 
-    
+   
     if 0<= int(time) // 100 <=8 :
-
         fcstTime = '0' + str(int(time) // 100 * 100 + 100)
 
     else :
@@ -186,7 +189,7 @@ def home(request):
             today_date = tomorrow_date
         else:
             fcstTime = str(int(time) // 100 * 100  + 100)
-        
+
 
     for item in r_item:
         if(item.get("fcstDate") == today_date and item.get("fcstTime") == fcstTime and item.get("category") == "TMP"):
@@ -318,7 +321,7 @@ def home(request):
     wsd = tomorrow['풍속']
     reh = tomorrow['습도']
 
-    # tomorrow_result에 현재 날씨 정보 
+    # tomorrow_result에 내일 출근 날씨 정보 
 
     tomorrow_result = []
     tomorrow_result.append(tmp)
